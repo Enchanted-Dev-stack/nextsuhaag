@@ -1,0 +1,9 @@
+input:not(:placeholder-shown) ~ label,
+input:focus ~ label,
+input:active ~ label {
+  transform: translateY(-32px);
+  @apply bg-[#4b3584];
+  padding: 0px 10px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
