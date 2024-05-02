@@ -7,17 +7,17 @@ import { Button } from "@nextui-org/react";
 function page() {
   return (
     <>
-      <main className="w-full h-screen bg-[url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhEKAS86Q3vI1lqqLfNObaDTB3Xqxae9WwyprWQ5NE4pAdT0Ms-UP1KaeVBGuRmE70EhcgpKtPA4BLkWpn9HppRNR4lPvUpDaw1hKbw_uM0sV3uVGrdvew9Ja-qWnKJVEqiVcc5xKrnIuHMae6ndbysbTB00q5VrWYCj39-Czj9QUeosxzaBonVPmLaPOhS/s1920/dada.png')] bg-repeat bg-cover relative">
-        <div className="absolute w-[95%]  max-w-[800px] bg-[url('https://www.shutterstock.com/image-vector/abstract-background-design-vector-600nw-127625360.jpg')] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p flex items-center gap-4 backdrop-blur-1 rounded-md overflow-hidden">
+      <main className="w-full h-screen shadow-[0px_0px_5px_0px_#000] bg-[url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPU4w2O0oSsig-IExvtjWaNLfVtqgU_iaEWJ-1zzjAzi_MizRJCWRgSx4zpmli7NvVGVsUR_RE3QD2Ha2d2BR5wvR9Ie0Ey3qnr5NNPLvvsg-L-mWQI4X2HVv7wJJeBkVn26XNjGQY9GFl0y_HSNnhbfuHvFMbJ23xQxYiu2RKuh216AWuz78uPdeekBd6/s1920/basketball%20legends,.png')] bg-repeat bg-cover relative">
+        <div className="absolute w-[95%]  max-w-[800px] bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20210512/pngtree-pink-abstract-geometric-floral-background-image_714519.jpg')] bg-no-repeat bg-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p flex items-center gap-4 backdrop-blur-1 rounded-md overflow-hidden">
           <form className="flex flex-col gap-4 justify-center w-[50%] max-w-[800px] p-4 h-full bg-graient-to-r from-red-500 to-slate-50 bg-transparent bg-opacity-80 backdrop-blur-1 text-black">
-            <h1 className="text-white text-center font-bold text-2xl">
+            <h1 className="text-red-500 text-center font-bold text-2xl">
               SIGNUP
             </h1>
             <div className="input-container relative">
               <input
                 type="email"
                 placeholder=" "
-                className="outline-none p-2 font-Outfit bg-slate-200 bg-opacity-10 backdrop-blur-sm rounded-md w-full texth"
+                className="outline-none p-2 font-Outfit bg-slate-200 bg-opacity-10 backdrop-blur-sm rounded-md w-full text-white"
               />
               <label
                 htmlFor="#"
@@ -30,7 +30,7 @@ function page() {
               <input
                 type="text"
                 placeholder=" "
-                className="outline-none p-2 font-Outfit bg-slate-200 bg-opacity-10 backdrop-blur-sm rounded-md w-full texth"
+                className="outline-none p-2 font-Outfit bg-slate-200 bg-opacity-10 backdrop-blur-sm rounded-md w-full text-white"
               />
               <label
                 htmlFor="#"
@@ -43,7 +43,7 @@ function page() {
               <input
                 type="text"
                 placeholder=" "
-                className="outline-none p-2 font-Outfit bg-slate-200 bg-opacity-10 backdrop-blur-sm rounded-md w-full texth"
+                className="outline-none p-2 font-Outfit bg-slate-200 bg-opacity-10 backdrop-blur-sm rounded-md w-full text-white"
               />
               <label
                 htmlFor="#"
