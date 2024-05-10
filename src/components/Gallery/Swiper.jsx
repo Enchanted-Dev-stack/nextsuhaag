@@ -14,7 +14,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import Image from 'next/image';
 
-export default () => {
+const SwiperComp = () => {
   return (
     <Swiper
     modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
@@ -68,3 +68,5 @@ export default () => {
     </Swiper>
   );
 };
+
+export default SwiperComp;

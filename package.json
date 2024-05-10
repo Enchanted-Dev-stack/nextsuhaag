@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/date-picker": "^2.0.7",
     "@nextui-org/react": "^2.3.6",
     "firebase": "^10.11.1",
     "framer-motion": "^11.1.7",
@@ -16,6 +17,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-firebase-hooks": "^5.1.1",
+    "sharp": "^0.33.3",
     "swiper": "^11.1.1"
   },
   "devDependencies": {

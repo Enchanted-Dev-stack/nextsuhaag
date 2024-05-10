@@ -24,7 +24,7 @@ export default function Home() {
         <div className="top bg-[#fae3ea] backdrop-blur-sm from-blue-200 to-slate-00 max-h-screen w-screen !aspect-video flex overflow-hidden">
           <Image src={bgimage} alt="" className="absolute top-0 left-0" />
           <div className="w-full border-1 h-full flex flex-col items-center justify-center font-Outfit">
-            <p className=" text-lg sm:text-4xl font-serif font-light ">
+            <p className="text-lg sm:text-4xl font-serif font-light">
               Find Your
             </p>
             <p className="text-2xl sm:text-5xl lg:text-6xl">Perfect Partner</p>

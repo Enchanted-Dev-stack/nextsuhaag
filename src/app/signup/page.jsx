@@ -1,14 +1,18 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+"use client"
 import React from "react";
 import "../Css/signup.css";
 import { Button } from "@nextui-org/react";
+import { useAuth } from "@/components/Contexts/authContext";
 
-function page() {
+function Page() {
+  const {googleSignIn} = useAuth();
+  
+
+
   return (
     <>
-      <main className="w-full h-screen shadow-[0px_0px_5px_0px_#000] bg-[url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPU4w2O0oSsig-IExvtjWaNLfVtqgU_iaEWJ-1zzjAzi_MizRJCWRgSx4zpmli7NvVGVsUR_RE3QD2Ha2d2BR5wvR9Ie0Ey3qnr5NNPLvvsg-L-mWQI4X2HVv7wJJeBkVn26XNjGQY9GFl0y_HSNnhbfuHvFMbJ23xQxYiu2RKuh216AWuz78uPdeekBd6/s1920/basketball%20legends,.png')] bg-repeat bg-cover relative">
-        <div className="absolute w-[95%]  max-w-[800px] bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20210512/pngtree-pink-abstract-geometric-floral-background-image_714519.jpg')] bg-no-repeat bg-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p flex items-center gap-4 backdrop-blur-1 rounded-md overflow-hidden">
+      <main className="w-full h-screen bg-[url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvBTcxJoSvAmGqNakbeDkMTRMQDD_qzheBafY8LhKBc_GXxNWhFcP0X_NPuwlNLcJNu4a7PsZftiAjzxl8k4n64WhXg5LRem8KehXSgZHVOBSWq4y3h9boPgZRAy_Vv0RGtK8NlHYx5S7ZYkaxmJWnlqDvU3vMD0RLihcBOjAE4lacg7Dt7D4v9hScaUdu/s1920/loli.png')] bg-repeat bg-cover relative">
+        <div className="absolute  shadow-[0px_0px_10px_0px_rgba(0,0,0,0.3)] w-[95%]  max-w-[800px] bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20210512/pngtree-pink-abstract-geometric-floral-background-image_714519.jpg')] bg-no-repeat bg-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p flex items-center gap-4 backdrop-blur-1 rounded-md overflow-hidden">
           <form className="flex flex-col gap-4 justify-center w-[50%] max-w-[800px] p-4 h-full bg-graient-to-r from-red-500 to-slate-50 bg-transparent bg-opacity-80 backdrop-blur-1 text-black">
             <h1 className="text-red-500 text-center font-bold text-2xl">
               SIGNUP
@@ -17,11 +21,11 @@ function page() {
               <input
                 type="email"
                 placeholder=" "
-                className="outline-none p-2 font-Outfit bg-slate-200 bg-opacity-10 backdrop-blur-sm rounded-md w-full text-white"
+                className="outline-none p-2 font-Outfit bg-white shadow-md bg-opacity-25 backdrop-blur-sm rounded-md w-full text-red-900"
               />
               <label
                 htmlFor="#"
-                className="absolute left-2 top-1/2 -translate-y-1/2 text-white"
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-100"
               >
                 Email
               </label>
@@ -30,11 +34,11 @@ function page() {
               <input
                 type="text"
                 placeholder=" "
-                className="outline-none p-2 font-Outfit bg-slate-200 bg-opacity-10 backdrop-blur-sm rounded-md w-full text-white"
+                className="outline-none p-2 font-Outfit bg-white shadow-md bg-opacity-25 backdrop-blur-sm rounded-md w-full text-red-900"
               />
               <label
                 htmlFor="#"
-                className="absolute left-2 top-1/2 -translate-y-1/2 text-white"
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-100"
               >
                 First Name
               </label>
@@ -43,11 +47,11 @@ function page() {
               <input
                 type="text"
                 placeholder=" "
-                className="outline-none p-2 font-Outfit bg-slate-200 bg-opacity-10 backdrop-blur-sm rounded-md w-full text-white"
+                className="outline-none p-2 font-Outfit bg-white shadow-md bg-opacity-25 backdrop-blur-sm rounded-md w-full text-red-900"
               />
               <label
                 htmlFor="#"
-                className="absolute left-2 top-1/2 -translate-y-1/2 text-white"
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-100"
               >
                 Last Name
               </label>
@@ -56,20 +60,21 @@ function page() {
               Sign Up
             </Button>
             <div className="fast-signups text-white text-[32px]">
-              <p className="text-white text-lg pb-1 font-semibold">
+              <p className="text-black text-lg pb-1 font-semibold font-Montserrat">
                 Fast Sign Up
               </p>
               <div className=" flex gap-2">
-                <div className="w-12 bg-blue-500 flex items-center justify-center p-1 rounded-full aspect-square bg-opacity-20 backdrop-blur-sm">
+                <div className="w-12 bg-blue-500 flex items-center justify-center p-2 rounded-full aspect-square bg-opacity-20 backdrop-blur-sm"
+                onClick={() => googleSignIn()}>
                   <ion-icon name="logo-google"></ion-icon>
                 </div>
-                <div className="w-12 bg-blue-500 flex items-center justify-center p-1 rounded-full aspect-square bg-opacity-20 backdrop-blur-sm">
+                <div className="w-12 bg-blue-500 flex items-center justify-center p-2 rounded-full aspect-square bg-opacity-20 backdrop-blur-sm">
                   <ion-icon name="logo-facebook"></ion-icon>
                 </div>
-                <div className="w-12 bg-blue-500 flex items-center justify-center p-1 rounded-full aspect-square bg-opacity-20 backdrop-blur-sm">
+                <div className="w-12 bg-blue-500 flex items-center justify-center p-2 rounded-full aspect-square bg-opacity-20 backdrop-blur-sm">
                   <ion-icon name="logo-twitter"></ion-icon>
                 </div>
-                <div className="w-12 bg-blue-500 flex items-center justify-center p-1 rounded-full aspect-square bg-opacity-20 backdrop-blur-sm">
+                <div className="w-12 bg-blue-500 flex items-center justify-center p-2 rounded-full aspect-square bg-opacity-20 backdrop-blur-sm">
                   <ion-icon name="logo-linkedin"></ion-icon>
                 </div>
               </div>
@@ -82,4 +87,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

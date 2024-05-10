@@ -18,6 +18,9 @@ import Footer from "@/components/Footer";
 import Head from "next/head";
 import Script from "next/script";
 import { NextUIProvider } from "@nextui-org/react";
+
+import { AuthProvider } from "@/components/Contexts/authContext";
+
 const inter = Inter({ subsets: ["latin"] });
 const kaushan = Kaushan_Script({
   subsets: ["latin"],
@@ -93,12 +96,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-      </Head>
       <body className={`${inter.variable} ${kaushan.variable} ${outfit.variable} ${kalam.variable} ${bad.variable} ${playfair.variable} ${montserrat.variable} ${raleway.variable} ${allura.variable} ${calli.variable} ${caveat.variable} ${poppins.variable}`}>
         <NextUIProvider>
+          <AuthProvider>
           {children}
           <Script
             type="module"
@@ -115,6 +115,7 @@ export default function RootLayout({ children }) {
             src="https://kit.fontawesome.com/1758e1736e.js"
             crossorigin="anonymous"
           />
+          </AuthProvider>
         </NextUIProvider>
       </body>
     </html>
