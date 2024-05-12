@@ -37,6 +37,7 @@ function Page({ children }) {
     "Assam",
     "Bihar",
     "Chhattisgarh",
+    "Delhi",
     "Goa",
     "Gujarat",
     "Haryana",
@@ -60,6 +61,13 @@ function Page({ children }) {
     "Uttar Pradesh",
     "Uttarakhand",
     "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli",
+    "Daman and Diu",
+    "Lakshadweep",
+    "Puducherry",
+    "Ladakh",
   ];
 
   const Religions = [
@@ -107,8 +115,8 @@ function Page({ children }) {
         </div>
       </div> */}
 
-        <div className="container w-[95%] max-w-[1200px] m-auto font-Outfit flex flex-col sm:flex-row justify-between  gap-4 sm:gap-0 ">
-          <div className="user-details w-[98%]sm:w-[25%] shadow-[5px_5px_7px_0px_rgba(0,0,0,0.2),-5px_-5px_7px_0px_white]">
+        <div className="container w-[95%] max-w-[1200px] m-auto font-Outfit flex flex-col sm:flex-row justify-between  gap-4 sm:gap-4 ">
+          <div className="user-details w-[90%] m-auto sm:m-0 sm:w-[25%] min-w-[300px] shadow-[5px_5px_7px_0px_rgba(0,0,0,0.2),-5px_-5px_7px_0px_white]">
             <div className="info flex flex-col items-center justify-center py-4">
               <div className="relative w-[60%] aspect-square rounded-full overflow-hidden">
                 <Image
@@ -150,7 +158,7 @@ function Page({ children }) {
               </p>
             </div>
           </div>
-          <div className="user-settings w-full sm:w-[72%] shadow-[5px_5px_7px_0px_rgba(0,0,0,0.2),-5px_-5px_7px_0px_white] px-4 py-2">
+          <div className="user-settings w-[90%] m-auto sm:m-0 sm:w-[72%] shadow-[5px_5px_7px_0px_rgba(0,0,0,0.2),-5px_-5px_7px_0px_white] px-4 py-2">
             <div className="mb-3 font-extrabold text-4xl font-Outfit">
               <h1 className="bg-[url('https://img.freepik.com/premium-photo/abstract-background-design-images-wallpaper-ai-generated_643360-91486.jpg')] bg-contain w-fit bg-clip-text text-transparent">
                 User Settings
@@ -167,7 +175,7 @@ function Page({ children }) {
                 // startContent={
                 //   <A/>
                 // }
-                className="sm:w-[49%] w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
+                className="lg:w-[48%] sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
               />
               <Input
                 type="text"
@@ -179,7 +187,7 @@ function Page({ children }) {
                 // startContent={
                 //   <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                 // }
-                className="sm:w-[49%] w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
+                className="lg:w-[48%] sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
               />
               <Input
                 type="number"
@@ -189,7 +197,7 @@ function Page({ children }) {
                 placeholder="you@example.com"
                 labelPlacement="outside"
                 startContent={<Phone />}
-                className="sm:w-[49%] w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
+                className="lg:w-[48%] sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
               />
               <Input
                 type="email"
@@ -204,7 +212,7 @@ function Page({ children }) {
                     color="#3b82f6"
                   />
                 }
-                className="sm:w-[49%] w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
+                className="lg:w-[48%] sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
               />
               <Input
                 type="text"
@@ -219,23 +227,35 @@ function Page({ children }) {
                     color="#3b82f6"
                   />
                 }
-                className="sm:w-[49%] w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
+                className="lg:w-[48%] sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
               />
-              <Input
-                type="text"
-                label="State"
-                variant="flat"
-                radius="sm"
-                placeholder="State"
-                labelPlacement="outside"
-                startContent={
-                  <Globe
-                    className="text-2xl text-default-400 pointer-events-none flex-shrink-0"
-                    color="#3b82f6"
-                  />
-                }
-                className="sm:w-[49%] w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
-              />
+              <div className="w-[48%]">
+                <h1 className="text-sm mb-1">State</h1>
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button
+                      variant="flat"
+                      className="w-full  shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] flex items-center justify-start text-slate-500 cursor-text hover:bg-slate-300"
+                    >
+                      {selectedState || "Select State"}
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu
+                    aria-label="Dynamic Actions"
+                    className="h-[300px] overflow-hidden overflow-y-auto"
+                  >
+                    {states.map((item, index) => (
+                      <DropdownItem
+                        key={index}
+                        color={"default"}
+                        onClick={() => setState(item)}
+                      >
+                        {item}
+                      </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
               <Input
                 type="text"
                 label="Postal Code"
@@ -249,29 +269,16 @@ function Page({ children }) {
                     color="#3b82f6"
                   />
                 }
-                className="sm:w-[49%] w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
+                className="lg:w-[48%] sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
               />
-              <div className="sm:w-[49%] w-full rounded-md">
+              <div className="lg:w-[48%] sm:w-full w-full rounded-md">
                 <h1 className="text-sm mb-1">Date of Birth</h1>
-                <DatePicker variant="shadow" className="w-full rounded-md shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white]"/>  
+                <DatePicker
+                  variant="shadow"
+                  className="w-full rounded-md shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white]"
+                />
               </div>
 
-              {/* <Dropdown>
-                <DropdownTrigger>
-                <Button variant="bordered">{ selectedState|| "Select" }</Button>
-                </DropdownTrigger>
-                <DropdownMenu aria-label="Dynamic Actions">
-                {states.map((item, index) => (
-                  <DropdownItem
-                  key={index}
-                  color={"default"}
-                  onClick={() => setState(item)}
-                  >
-                  {item}
-                  </DropdownItem>
-                  ))}
-                  </DropdownMenu>
-                </Dropdown> */}
               {/* <Input
                 type="date"
                 label="DOB"
