@@ -43,7 +43,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`sticky Navbar w-full top-0 left-0 px-2 bg-opacity-90 backdrop-blur-sm lg:shadow-none py-2 lg:py-1 flex items-center justify-between border-none h-26 bg-[#fae3ea] z-[1000]`}
+      className={`sticky Navbar w-full top-0 left-0 px-2 bg-opacity-60 backdrop-blur-sm lg:shadow-none py-2 lg:py-1 flex items-center justify-between border-none h-26 bg-[#fae3ea] z-[1000]`}
     >
       <div className="logo h-full flex items-center justify-center">
         
@@ -152,7 +152,7 @@ function Navbar() {
                 </DropdownMenu>
               </Dropdown>
             </li>
-            <li>
+            {/* <li>
               <Button
                 color="primary"
                 variant="light"
@@ -161,7 +161,7 @@ function Navbar() {
               >
                Logout
               </Button>
-            </li>
+            </li> */}
           </ul>
         </div>
         <Button

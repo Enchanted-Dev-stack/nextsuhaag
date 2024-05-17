@@ -1,14 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import bgimg from "../../../Assets/Images/Dashboard/bg2.png";
-import paintingImg from "../../../Icons/Animated/painting.gif";
-import cookingImg from "../../../Icons/Animated/frying-pan.gif";
-import dancingImg from "../../../Icons/Animated/disco-ball.gif";
-import singingImg from "../../../Icons/Animated/carol-singer.gif";
-import butterflyImg from "../../../Icons/Animated/butterfly.gif";
+// import bgimg from "../../../Assets/Images/Dashboard/bg2.png";
+import paintingImg from "../../Icons/Animated/painting.gif";
+import cookingImg from "../../Icons/Animated/frying-pan.gif";
+import dancingImg from "../../Icons/Animated/disco-ball.gif";
+import singingImg from "../../Icons/Animated/carol-singer.gif";
+import butterflyImg from "../../Icons/Animated/butterfly.gif";
 import Footer from "@/components/Footer";
-import Navbar from "../../../components/Navbar";
+import Navbar from "../../components/Navbar";
+import {useRouter} from "next/navigation";
 import {
   Button,
   DatePicker,
@@ -19,12 +20,21 @@ import {
   Input,
 } from "@nextui-org/react";
 import { MailIcon } from "@/Icons/MailIcon";
-import Phone from "../../../Icons/Phone";
-import City from "../../../Icons/City";
-import State from "../../../Icons/State";
+import Phone from "../../Icons/Phone";
+import City from "../../Icons/City";
+import State from "../../Icons/State";
 // import Calendar from "../../../Icons/Calendar";
-import Globe from "../../../Icons/Globe";
+import Globe from "../../Icons/Globe";
+import { useAuth } from "@/components/Contexts/authContext";
 function Page({ children }) {
+
+  const router = useRouter();
+  const {currentUser, logout} = useAuth();
+
+  useEffect(() => {
+    document.title = "Suhaag | Dashboard";
+  }, []);
+
   const [selectedState, setSelectedState] = useState(null);
   const [selectedReligion, setSelectedReligion] = useState(null);
   const setState = (state) => {
@@ -366,9 +376,15 @@ function Page({ children }) {
                 </Dropdown>
               </div>
             </div>
-            <Button color="primary" variant="shadow" className="mt-4">
+            <div className="buttons flex gap-3">
+            <Button color="primary" variant="shadow" className="mt-4 w-full">
               Update
             </Button>
+            <Button color="danger" variant="shadow" className="mt-4 w-full" onClick={() => {logout();
+            router.replace("/")}}>
+              Logout
+            </Button>
+            </div>
           </div>
         </div>
       </main>

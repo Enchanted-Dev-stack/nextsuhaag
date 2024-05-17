@@ -2,6 +2,7 @@
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../../../firebase";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 export const AuthContext = React.createContext();
@@ -19,9 +20,11 @@ export function AuthProvider({ children }) {
 
     const setCredentials = (user) => {
         localStorage.setItem("user", JSON.stringify(user));
+        Cookies.set("user", JSON.stringify(user));
     };
     const delCredentials = (user) => {
         localStorage.removeItem("user");
+        Cookies.remove("user");
     };
 
     useEffect(() => {
@@ -60,7 +63,7 @@ export function AuthProvider({ children }) {
             setCurrentUser(user);
             setIsUserLoggedIn(true);
             setCredentials(user);
-            router.push("/");
+            router.push("/dashboard");
         }
       }
 

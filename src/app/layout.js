@@ -13,13 +13,12 @@ import {
   Poppins,
 } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar";
-import Footer from "@/components/Footer";
 import Head from "next/head";
 import Script from "next/script";
 import { NextUIProvider } from "@nextui-org/react";
 
 import { AuthProvider } from "@/components/Contexts/authContext";
+import Redirect from "@/components/Utils/redirect";
 
 const inter = Inter({ subsets: ["latin"] });
 const kaushan = Kaushan_Script({
@@ -99,6 +98,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${kaushan.variable} ${outfit.variable} ${kalam.variable} ${bad.variable} ${playfair.variable} ${montserrat.variable} ${raleway.variable} ${allura.variable} ${calli.variable} ${caveat.variable} ${poppins.variable}`}>
         <NextUIProvider>
           <AuthProvider>
+            {/* <Redirect /> */}
           {children}
           <Script
             type="module"
