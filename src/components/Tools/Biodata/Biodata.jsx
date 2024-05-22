@@ -10,7 +10,6 @@ import {
   Link,
 } from "@react-pdf/renderer";
 
-import bg from "@/Assets/Images/"
 import monstserrateAlternateRegular from "../../../Assets/Fonts/MontserratAlternate/MontserratAlternates-Regular.ttf";
 import monstserrateAlternateBold from "../../../Assets/Fonts/MontserratAlternate/MontserratAlternates-Bold.ttf";
 import OutfitRegular from "../../../Assets/Fonts/Outfit/Outfit-Regular.ttf";
@@ -50,6 +49,7 @@ const styles = StyleSheet.create({
   row: {
     display: "flex",
     flexDirection: "row",
+    gap: 10,
   },
   Familylabel: {
     fontSize: 20,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   label: {
-    width: 160,
+    width: 140,
   },
   container: {
     position: "absolute",
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     transform: "translateX(-50%)",
   },
   btn: {
-    backgroundColor: "blue",
+    backgroundColor: "pink",
     color: "white",
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -105,7 +105,7 @@ function Biodata(props) {
       <Page size="A4" style={styles.page}>
         <Image
           style={styles.bg}
-          src={props.template}
+          src={props.template || "/BiodataTemplates/bg1.png"}
         ></Image>
         <View style={styles.namecontainer}>
           <Text style={styles.name}>{props.name}</Text>
@@ -135,85 +135,105 @@ function Biodata(props) {
             <View style={styles.row}>
               <Text style={styles.label}>Nakshatra</Text>
               <Text>:</Text>
+              <Text>{props.nakshatra}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Height</Text>
               <Text>:</Text>
+              <Text>{props.height}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Religion</Text>
               <Text>:</Text>
+              <Text>{props.religion}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Caste</Text>
               <Text>:</Text>
+              <Text>{props.caste}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Subcaste</Text>
               <Text>:</Text>
+              <Text>{props.subcaste}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Gotra</Text>
               <Text>:</Text>
+              <Text>{props.gotra}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Manglik</Text>
               <Text>:</Text>
+              <Text>{props.manglik}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Education</Text>
               <Text>:</Text>
+              <Text>{props.education}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>College Name</Text>
               <Text>:</Text>
+              <Text>{props.college}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Employed in</Text>
               <Text>:</Text>
+              <Text>{props.employedIn}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Organization Name</Text>
               <Text>:</Text>
+              <Text>{props.organization}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Annual Income</Text>
               <Text>:</Text>
+              <Text>{props.income}</Text>
             </View>
           </View>
           <View style={styles.family}>
             <Text style={styles.Familylabel}>Family Details</Text>
             <View style={styles.row}>
-              <Text style={styles.label}>Father's Name</Text>
+              <Text style={styles.label}>Father&apos;s Name</Text>
               <Text>:</Text>
+              <Text>{props.fname}</Text>
             </View>
             <View style={styles.row}>
-              <Text style={styles.label}>Father's Occupation</Text>
+              <Text style={styles.label}>Father&apos;s Occupation</Text>
               <Text>:</Text>
+              <Text>{props.foccupation}</Text>
             </View>
             <View style={styles.row}>
-              <Text style={styles.label}>Mother's Name</Text>
+              <Text style={styles.label}>Mother&apos;s Name</Text>
               <Text>:</Text>
+              <Text>{props.mname}</Text>
             </View>
             <View style={styles.row}>
-              <Text style={styles.label}>Mother's Occupation</Text>
+              <Text style={styles.label}>Mother&apos;s Occupation</Text>
               <Text>:</Text>
+              <Text>{props.moccupation}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Total Brothers</Text>
               <Text>:</Text>
+              <Text>{props.totalbrothers}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Total Sisters</Text>
               <Text>:</Text>
+              <Text>{props.totalsisters}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Married Brothers</Text>
               <Text>:</Text>
+              <Text>{props.marriedbrothers}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Married Sisters</Text>
               <Text>:</Text>
+              <Text>{props.marriedsisters}</Text>
             </View>
           </View>
           <View style={styles.contact}>
@@ -221,16 +241,18 @@ function Biodata(props) {
             <View style={styles.row}>
               <Text style={styles.label}>Contact Number</Text>
               <Text>:</Text>
+              <Text>{props.number}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Address</Text>
               <Text>:</Text>
+              <Text>{props.address}</Text>
             </View>
           </View>
         </View>
         <View style={styles.container}>
           <Link href="https://google.com" style={styles.btn}>
-            <Text>Generate Your Own Biodata</Text>
+            <Text>Click to Generate Your Own Biodata</Text>
           </Link>
         </View>
       </Page>

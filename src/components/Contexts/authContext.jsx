@@ -34,9 +34,11 @@ export function AuthProvider({ children }) {
         if (user) {
             setCurrentUser(user);
             setIsUserLoggedIn(true);
+            Cookies.set("user", JSON.stringify(user));
         }else{
             setCurrentUser(null);
             setIsUserLoggedIn(false);
+            Cookies.remove("user");
         }
         setLoading(false);
 

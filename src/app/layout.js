@@ -18,7 +18,10 @@ import Script from "next/script";
 import { NextUIProvider } from "@nextui-org/react";
 
 import { AuthProvider } from "@/components/Contexts/authContext";
-import Redirect from "@/components/Utils/redirect";
+// import Redirect from "@/components/Utils/redirect";
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 
 const inter = Inter({ subsets: ["latin"] });
 const kaushan = Kaushan_Script({

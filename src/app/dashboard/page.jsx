@@ -9,7 +9,7 @@ import singingImg from "../../Icons/Animated/carol-singer.gif";
 import butterflyImg from "../../Icons/Animated/butterfly.gif";
 import Footer from "@/components/Footer";
 import Navbar from "../../components/Navbar";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   Button,
   DatePicker,
@@ -26,17 +26,125 @@ import State from "../../Icons/State";
 // import Calendar from "../../../Icons/Calendar";
 import Globe from "../../Icons/Globe";
 import { useAuth } from "@/components/Contexts/authContext";
+import LangIcon from "@/Icons/Lang";
+import DumbbellIcon from "@/Icons/Dumbbell";
+import HeightIcon from "@/Icons/Height";
 function Page({ children }) {
-
   const router = useRouter();
-  const {currentUser, logout} = useAuth();
+  const { currentUser, logout } = useAuth();
 
   useEffect(() => {
     document.title = "Suhaag | Dashboard";
   }, []);
 
+  const maritalOptions = [
+    "Married",
+    "Single",
+    "Divorced",
+    "Widow",
+    "separated",
+    "Other",
+  ];
+
+  const BodyTypes = [
+    {
+      value: "slim",
+      label: "Slim",
+      description: "Lean and slender body type with minimal body fat.",
+    },
+    {
+      value: "average",
+      label: "Average",
+      description:
+        "A body type that is neither too thin nor too heavy, with a balanced physique.",
+    },
+    {
+      value: "athletic",
+      label: "Athletic",
+      description:
+        "Muscular and toned body type, typically with a lower percentage of body fat.",
+    },
+    {
+      value: "heavy",
+      label: "Heavy",
+      description:
+        "Heavier body type, generally larger and possibly with higher body fat percentage.",
+    },
+    {
+      value: "extra_pounds",
+      label: "A Few Extra Pounds",
+      description:
+        "A slightly heavier build than average, with some extra weight.",
+    },
+    {
+      value: "curvy",
+      label: "Curvy",
+      description:
+        "Body type with fuller, well-defined curves, often with a larger bust and hips.",
+    },
+    {
+      value: "petite",
+      label: "Petite",
+      description: "Small and slender body type, typically shorter in height.",
+    },
+    {
+      value: "plus_size",
+      label: "Plus Size",
+      description:
+        "Larger body type with more body fat, often wearing plus-size clothing.",
+    },
+    {
+      value: "fit",
+      label: "Fit",
+      description:
+        "Well-maintained, physically active body type with noticeable muscle tone.",
+    },
+  ];
+
+  const EatingHabits = [
+    {
+      "value": "vegetarian",
+      "label": "Vegetarian",
+      "description": "Does not eat meat but may consume dairy and eggs."
+    },
+    {
+      "value": "non_vegetarian",
+      "label": "Non-Vegetarian",
+      "description": "Eats all types of food, including meat."
+    },
+    {
+      "value": "vegan",
+      "label": "Vegan",
+      "description": "Does not consume any animal products, including dairy and eggs."
+    },
+    {
+      "value": "eggetarian",
+      "label": "Eggetarian",
+      "description": "Vegetarian but consumes eggs."
+    },
+    {
+      "value": "jain",
+      "label": "Jain",
+      "description": "Follows Jain dietary restrictions, avoiding root vegetables and certain other foods."
+    },
+    {
+      "value": "pescatarian",
+      "label": "Pescatarian",
+      "description": "Primarily vegetarian but includes fish and seafood in their diet."
+    },
+    {
+      "value": "others",
+      "label": "Others",
+      "description": "Other specific eating habits or dietary restrictions not covered by the above categories."
+    }
+  ]
+  
+
   const [selectedState, setSelectedState] = useState(null);
   const [selectedReligion, setSelectedReligion] = useState(null);
+  const [selectedMarital, setSelectedMarital] = useState(null);
+  const [selectedBodyType, setSelectedBodyType] = useState(null);
+  const [eatingHabit, setEatingHabit] = useState(null);
   const setState = (state) => {
     setSelectedState(state);
   };
@@ -281,6 +389,51 @@ function Page({ children }) {
                 }
                 className="lg:w-[48%] sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
               />
+              <Input
+                type="text"
+                label="Mother Tounge"
+                variant="flat"
+                radius="sm"
+                placeholder="eg: English"
+                labelPlacement="outside"
+                startContent={
+                  <LangIcon
+                    className="text-2xl text-default-400 pointer-events-none flex-shrink-0"
+                    color="#3b82f6"
+                  />
+                }
+                className="lg:w-[48%] sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
+              />
+              <Input
+                type="text"
+                label="Height"
+                variant="flat"
+                radius="sm"
+                placeholder="eg: 6'1 OR 6 ft 1"
+                labelPlacement="outside"
+                startContent={
+                  <HeightIcon
+                    className="text-2xl text-default-400 pointer-events-none flex-shrink-0"
+                    color="#3b82f6"
+                  />
+                }
+                className="lg:w-[48%] sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
+              />
+              <Input
+                type="text"
+                label="Weight (in Kg)"
+                variant="flat"
+                radius="sm"
+                placeholder="eg: 56"
+                labelPlacement="outside"
+                startContent={
+                  <DumbbellIcon
+                    className="text-2xl text-default-400 pointer-events-none flex-shrink-0"
+                    color="#3b82f6"
+                  />
+                }
+                className="lg:w-[48%] bg sm:w-full w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
+              />
               <div className="lg:w-[48%] sm:w-full w-full rounded-md">
                 <h1 className="text-sm mb-1">Date of Birth</h1>
                 <DatePicker
@@ -288,7 +441,29 @@ function Page({ children }) {
                   className="w-full rounded-md shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white]"
                 />
               </div>
-
+              <div className="self-start lg:w-[48%] sm:w-full w-full">
+                <h1 className="text-center bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent font-semibold">
+                  Marital Status
+                </h1>
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button variant="bordered" className="w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] border-none">
+                      {selectedMarital || "Choose One"}
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu aria-label="Dynamic Actions">
+                    {maritalOptions.map((item, index) => (
+                      <DropdownItem
+                        key={index}
+                        color={"default"}
+                        onClick={() => setSelectedMarital(item)}
+                      >
+                        {item}
+                      </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
               {/* <Input
                 type="date"
                 label="DOB"
@@ -319,11 +494,13 @@ function Page({ children }) {
                 }
                 className="sm:w-[49%] w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] rounded-md"
               /> */}
-              <div className="self-start">
-                <h1 className="text-center">Gender</h1>
+              <div className="self-start lg:w-[48%] w-full">
+                <h1 className="text-center bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent font-semibold">
+                  Gender
+                </h1>
                 <Dropdown>
                   <DropdownTrigger>
-                    <Button variant="bordered">
+                    <Button variant="bordered" className=" w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] border-none">
                       {selectedState || "Select"}
                     </Button>
                   </DropdownTrigger>
@@ -333,11 +510,13 @@ function Page({ children }) {
                   </DropdownMenu>
                 </Dropdown>
               </div>
-              <div>
-                <h1 className="text-center">Religion</h1>
+              <div className="lg:w-[48%] w-full">
+                <h1 className="text-center bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent font-semibold">
+                  Religion
+                </h1>
                 <Dropdown>
                   <DropdownTrigger>
-                    <Button variant="bordered">
+                    <Button variant="bordered" className="w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] border-none">
                       {selectedReligion || "Select Religion"}
                     </Button>
                   </DropdownTrigger>
@@ -354,11 +533,13 @@ function Page({ children }) {
                   </DropdownMenu>
                 </Dropdown>
               </div>
-              <div>
-                <h1 className="text-center">Qualifications</h1>
+              <div className="lg:w-[48%] w-full">
+                <h1 className="text-center bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent font-semibold">
+                  Qualifications
+                </h1>
                 <Dropdown>
                   <DropdownTrigger>
-                    <Button variant="bordered">
+                    <Button variant="bordered" className="w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] border-none">
                       {selectedReligion || "Select Religion"}
                     </Button>
                   </DropdownTrigger>
@@ -374,16 +555,63 @@ function Page({ children }) {
                     ))}
                   </DropdownMenu>
                 </Dropdown>
+              </div>
+              <div className="lg:w-[48%] w-full">
+                <h1 className="text-center bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent font-semibold">
+                  Eating Habits
+                </h1>
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button variant="bordered" className="w-full shadow-[3px_3px_4px_0px_rgba(0,0,0,0.2),-3px_-3px_4px_0px_white] border-none">
+                      {eatingHabit || "Choose One"}
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu aria-label="Dynamic Actions">
+                    {EatingHabits.map((item, index) => (
+                      <DropdownItem
+                        key={index}
+                        color={"default"}
+                        onClick={() => setEatingHabit(item.value)}
+                      >
+                        {item.label}
+                      </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+              <div className="w-full">
+                <h1 className="text-center bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent font-semibold my-2">
+                  Body Type
+                </h1>
+                <div className="flex gap-2 justify-center">
+                  {BodyTypes.map((item, index) => (
+                    <span
+                      key={index}
+                      title={item.description}
+                      className={`font-normal py-1 px-2 border-2 border-slate-400 text-sm rounded-full cursor-pointer flex items-center justify-center transition-all duration-400 ${selectedBodyType === item.value ? "bg-gradient-to-r from-red-500 to-blue-500 text-white border-solid border-white " : " border-dashed"}`}
+                      onClick={() => setSelectedBodyType(item.value)}
+                    >
+                      {item.label}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="buttons flex gap-3">
-            <Button color="primary" variant="shadow" className="mt-4 w-full">
-              Update
-            </Button>
-            <Button color="danger" variant="shadow" className="mt-4 w-full" onClick={() => {logout();
-            router.replace("/")}}>
-              Logout
-            </Button>
+              <Button color="primary" variant="shadow" className="mt-4 w-full">
+                Update
+              </Button>
+              <Button
+                color="danger"
+                variant="shadow"
+                className="mt-4 w-full"
+                onClick={() => {
+                  logout();
+                  router.replace("/");
+                }}
+              >
+                Logout
+              </Button>
             </div>
           </div>
         </div>

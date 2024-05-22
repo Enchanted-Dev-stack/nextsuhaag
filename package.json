@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.1",
     "@nextui-org/date-picker": "^2.0.7",
     "@nextui-org/react": "^2.3.6",
     "@react-pdf/renderer": "^3.4.4",
