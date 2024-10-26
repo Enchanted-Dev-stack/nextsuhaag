@@ -19,7 +19,7 @@ export default function Home() {
       <Navbar variant="clear"/>
       <main className="relative top-0 left-0 font-bold bg-[#fae3ea] h-full">
         <div className="top  backdrop-blur-sm from-blue-500 to-slate-00 max-h-screen w-screen aspect-[27.5/9] max-md:min-h-[100svh] min-h-[600px] flex overflow-hidden">
-          <img src={"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaW63vLmLuAouBASiAjipX7pkKu9_00KaJth8xIdxBI08kRa32mxRpkNkMdYy0aaA4KYJeStJEjhhq35PSutGT8L05dLQykKpLPQT5EnHV5bPTP73xYgyczir6mPPnKthuaAKCyZBDlkyASppgmu-y4VkORsJIjDC9gzYoL_Yo6D1saIOv07anrLOAlwJz/s7700/Untitled%20design%20-%202024-10-26T215346.141.webp"} alt="" className="absolute top-0 left-0 w-full h-full object-cover" />
+          <img src={"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJzRMGH9v9rglCVgNj-fPknO9ndios7CqsUv7WRbNHyLcpBvW8MU42r7Q58drZV8bxN5soQili7Jl-oEr8A9w7gPTxoOxO2ayZvj_PmLshUcKjbwmRy3ghfqpeOYFcEXJYO6mTJ_2ArTyv8kMC7LURsSqc9mI5q_BYR1fHBjII0VnttEJKv6blfsoFlhID/s7700/Untitled%20design%20-%202024-10-27T003345.004.webp"} alt="" className="absolute top-0 left-0 w-full h-full object-cover" />
           <div className="w-full  h-full flex flex-col items-center justify-end font-Outfit pb-10 max-sm:pb-0">
             {/* <p className="text-lg sm:text-4xl font-serif font-light">
               Find Your

@@ -52,7 +52,7 @@ function Navbar(props) {
         fill />
         </div>
         <div className="texts flex flex-col justify-center">
-          <span className="text-2xl lg:text-4xl font-Kaushan pr-2 pb-2 font-normal text-Primary-600 bg-gradient-to-t from-[#509ae7] to-red-600 bg-clip-text text-transparent">
+          <span className={`text-2xl lg:text-4xl font-Kaushan pr-2 pb-2 font-normal text-Primary-600 ${props.variant == "clear" ? "text-white" : "bg-gradient-to-t"} from-[#509ae7] to-red-600 bg-clip-text text-transparent`}>
             Suhaag
           </span>
           {/* <span className="text-xs font-Oswald tracking-widest text-red-700">FIND PERFECT PARTNER</span> */}
@@ -79,37 +79,29 @@ function Navbar(props) {
             <ion-icon name="close-outline" ></ion-icon>
           </div>
           <ul className="flex justify-center items-center gap-4 text-primary font-normal flex-col lg:flex-row ">
-            <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
+            {/* <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
               <li>
-                {/* <Button color="primary" variant="light"> */}
                 Home
-                {/* </Button> */}
               </li>
             </a>
             <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
               <li>
-                {/* <Button color="primary" variant="light" className="px-3 py-1"> */}
                 Decorators
-                {/* </Button> */}
               </li>
             </a>
             <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
               <li>
-                {/* <Button color="primary" variant="light"> */}
                 Photographers
-                {/* </Button> */}
               </li>
-            </a>
-            <a
+            </a> */}
+            {/* <a
               href={"/gallery"}
               className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}
             >
               <li>
-                {/* <Button color="primary" variant="light"> */}
                 Gallery
-                {/* </Button> */}
               </li>
-            </a>
+            </a> */}
             <a
               href={"/contact"}
               className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}
@@ -122,7 +114,7 @@ function Navbar(props) {
             </a>
 
             <li>
-              <Dropdown>
+              {/* <Dropdown>
                 <DropdownTrigger>
                   <Button
                     color={color}
@@ -142,15 +134,15 @@ function Navbar(props) {
                       <a href={service.link}>{service.name}</a>
                     </DropdownItem>
                   ))}
-                  {/* <DropdownItem
+                  <DropdownItem
                       key="delete"
                       className="text-danger"
                       color="danger"
                     >
                       Delete file
-                    </DropdownItem> */}
+                    </DropdownItem>
                 </DropdownMenu>
-              </Dropdown>
+              </Dropdown> */}
             </li>
             {/* <li>
               <Button
