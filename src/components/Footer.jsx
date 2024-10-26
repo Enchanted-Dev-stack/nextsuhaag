@@ -5,13 +5,13 @@ import { Button, Input } from "@nextui-org/react";
 function Footer() {
   return (
     <footer className="bg-[#5f45eb] text-white">
-      <div className="contact font-Outfit flex flex-col xs:flex-row m-auto items-center justify-between py-3 px-20">
-        <div className="section1 p-5">
-          <h3 className="text-3xl font-semibold">Contact Us</h3>
-          <p className="text-xl">+91-XXX-XXXX-XXX</p>
+      <div className="contact font-Outfit flex  xs:flex-row m-auto items-center justify-between py-3 px-20 max-sm:px-5">
+        <div className="section1 p-5 max-sm:p-2">
+          <h3 className="text-3xl max-sm:text-2xl font-semibold">Contact Us</h3>
+          <p className="text-xl max-sm:text-sm">+91-XXX-XXXX-XXX</p>
         </div>
         <div className="socials text-[24px] flex flex-col items-center justify-center">
-          <h3 className="text-3xl font-bold">Socials</h3>
+          <h3 className="text-3xl font-bold max-sm:text-2xl">Socials</h3>
           <div>
             <a href="#" className="mr-2">
               <ion-icon name="logo-instagram"></ion-icon>
@@ -19,15 +19,15 @@ function Footer() {
             <a href="#" className="mr-2">
               <ion-icon name="logo-facebook"></ion-icon>
             </a>
-            <a href="#" className="mr-2">
+            <a href="#">
               <ion-icon name="logo-twitter"></ion-icon>
             </a>
           </div>
         </div>
       </div>
-      <div className="mainSection bg-[#674bff] pt-6 px-20">
+      <div className="mainSection bg-[#674bff] pt-6 max-sm:pt-0 px-20 max-sm:px-5 font-Outfit">
         
-        <div className="mailSub w-[40%]">
+        <div className="mailSub w-[40%] max-sm:w-full max-md:w-[60%]">
           <div className="branding flex gap-4 py-5">
             <img
               src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUqgIwiPZfgj5hJYhbUSM79cMOcrOuDLD2BqMnFrmaTLJKJtkSLbf6IqzRVDeIh1TQwCiSKfMzrp0-X2pRt1O20KpHnW4Vfs0_2-V1Y_W6QE1D6FLOLLaexbhcCe49e6sYIxfYQrK3B97CpCpNz6Yvf_jEHjgEwXp9BfW6tnhJXDBBaBS0bGBGWHP5IwDA/s702/suhaag-1-SEND-3.png"
@@ -41,7 +41,7 @@ function Footer() {
               <p className="text-sm font-medium">FIND PERFECT PARTNER</p>
             </div>
           </div>
-          <h2 className="font-Allura text-4xl font-normal mt-2 mb-4">
+          <h2 className="font-Allura text-4xl max-sm:text-2xl font-normal mt-2 mb-4 max-sm:my-1">
             Feel Free With Us
           </h2>
           <div className="mail w-full max-w-[400px] flex gap-2">
@@ -62,7 +62,9 @@ function Footer() {
             variant="flat"
             className="text-white">Subscribe</Button>
           </div>
+          <span className="font-SpaceMono">
           #Chandigarh, India
+          </span>
         </div>
 
        

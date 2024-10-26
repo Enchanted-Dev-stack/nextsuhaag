@@ -5,14 +5,14 @@ import ListItem from "./ListItem";
 
 function BestSite() {
   return (
-    <div className="w-fit lg:w-[80%] xl:w-[70%] flex flex-col lg:flex-row items-center justify-center m-auto font-Outfit  my-20 rounded-xl p-5 ">
+    <div className="w-fit lg:w-[80%] xl:w-[70%] flex flex-col lg:flex-row items-center justify-center m-auto font-Outfit rounded-xl p-5  bg-white">
       <div className="leftarea w-full xs:w-[80%] lg:w-1/2 flex flex-col items-center  lg:block">
-        <h1 className="text-5xl font-bold text-center lg:text-left">
+        <h1 className="text-5xl max-sm:text-4xl font-bold text-center lg:text-left">
           Best Online <br /> Matrimony Site.
         </h1>
         <div className="flex gap-6 items-center font-normal my-10">
-          <span className="text-red-500 text-6xl font-bold">90%</span>
-          <p className="text-lg">
+          <span className="text-red-500 text-6xl font-bold max-sm:text-4xl">90%</span>
+          <p className="text-lg max-sm:text-sm font-SpaceMono">
             of our members are <br /> highly educated.
           </p>
         </div>
