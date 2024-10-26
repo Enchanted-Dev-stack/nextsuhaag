@@ -1,171 +1,242 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Checkbox } from "@/components/ui/checkbox"
-import { ArrowRight, ArrowLeft, User, Briefcase, Heart, Mail, CheckCircle } from 'lucide-react'
-import { Toaster, toast } from 'sonner'
-import { useSearchParams } from 'next/navigation'
-import confetti from 'canvas-confetti'
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import axios from "axios";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  ArrowRight,
+  ArrowLeft,
+  User,
+  Briefcase,
+  Heart,
+  Mail,
+  CheckCircle,
+} from "lucide-react";
+import { Toaster, toast } from "sonner";
+import { useRouter, useSearchParams } from "next/navigation";
+import confetti from "canvas-confetti";
 
 export function RegisterPageComponent() {
-  const searchParams = useSearchParams()
-  const [step, setStep] = useState(1)
-  const [progress, setProgress] = useState(0)
-  const [verificationCode, setVerificationCode] = useState('')
-  const [isEmailSent, setIsEmailSent] = useState(false)
-  const [isVerified, setIsVerified] = useState(false)
-  const [resendTimer, setResendTimer] = useState(0)
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const [step, setStep] = useState(1);
+  const [progress, setProgress] = useState(0);
+  const [verificationCode, setVerificationCode] = useState("");
+  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [resendTimer, setResendTimer] = useState(0);
+  const [verifymsg, setVerifymsg] = useState("");
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    course: '',
-    phoneNumber: '',
-    dob: '',
-    gender: '',
-    education: '',
-    occupation: '',
-    annualIncome: '',
-    workLocation: '',
-    maritalStatus: '',
-    religion: '',
-    diet: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    course: "",
+    phoneNumber: "",
+    dob: "",
+    gender: "",
+    education: "",
+    occupation: "",
+    annualIncome: "",
+    workLocation: "",
+    maritalStatus: "",
+    religion: "",
+    diet: "",
     interests: [],
-    about: '',
-    lookingFor: '',
-    ageFrom: '',
-    ageTo: '',
-    address: '',
-    motherTongue: ''
-  })
+    about: "",
+    lookingFor: "",
+    ageFrom: "",
+    ageTo: "",
+    address: "",
+    motherTongue: "",
+  });
 
   useEffect(() => {
     console.log(formData);
   }, [formData]);
 
   useEffect(() => {
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
-      lookingFor: searchParams.get('lookingFor') || '',
-      ageFrom: searchParams.get('ageFrom') || '',
-      ageTo: searchParams.get('ageTo') || '',
-      religion: searchParams.get('religion') || '',
-      motherTongue: searchParams.get('motherTongue') || '',
+      lookingFor: searchParams.get("lookingFor") || "",
+      ageFrom: searchParams.get("ageFrom") || "",
+      ageTo: searchParams.get("ageTo") || "",
+      religion: searchParams.get("religion") || "",
+      motherTongue: searchParams.get("motherTongue") || "",
     }));
   }, [searchParams]);
 
   useEffect(() => {
     if (step === 4 && !isEmailSent) {
-      sendVerificationCode()
+      sendVerificationCode();
     }
-  }, [step, isEmailSent])
+  }, [step, isEmailSent]);
 
   useEffect(() => {
-    let interval
+    let interval;
     if (resendTimer > 0) {
       interval = setInterval(() => {
-        setResendTimer(prevTimer => prevTimer - 1)
-      }, 1000)
+        setResendTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
     }
-    return () => clearInterval(interval)
-  }, [resendTimer])
+    return () => clearInterval(interval);
+  }, [resendTimer]);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prevData => ({
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
       ...prevData,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   const handleSelectChange = (name, value) => {
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   const handleCheckboxChange = (interest) => {
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
       interests: prevData.interests.includes(interest)
-        ? prevData.interests.filter(i => i !== interest)
-        : [...prevData.interests, interest]
-    }))
-  }
+        ? prevData.interests.filter((i) => i !== interest)
+        : [...prevData.interests, interest],
+    }));
+  };
 
   const validateStep = () => {
-    return true
-  }
+    const errors = []
+    if (step === 1) {
+      if (!formData.firstName) errors.push("First name is required")
+      if (!formData.lastName) errors.push("Last name is required")
+      if (!formData.email) errors.push("Email is required")
+      if (!/\S+@\S+\.\S+/.test(formData.email)) errors.push("Email is invalid")
+      if (!formData.phoneNumber) errors.push("Phone number is required")
+      if (!/^\d{10}$/.test(formData.phoneNumber)) errors.push("Phone number is invalid")
+      if (!formData.dob) errors.push("Date of birth is required")
+      if (!formData.gender) errors.push("Gender is required")
+    } else if (step === 2) {
+      if (!formData.education) errors.push("Education is required")
+      if (!formData.occupation) errors.push("Occupation is required")
+      if (!formData.annualIncome) errors.push("Annual income is required")
+    } else if (step === 3) {
+      if (!formData.maritalStatus) errors.push("Marital status is required")
+      if (!formData.religion) errors.push("Religion is required")
+    } else if (step === 4) {
+      if (!isVerified) errors.push("Email verification is required")
+    }
+    return errors
+  };
 
   const nextStep = () => {
-    const errors = validateStep()
+    const errors = validateStep();
     if (errors.length > 0) {
-      errors.forEach(error => toast.error(error))
-      return
+      errors.forEach((error) => toast.error(error));
+      return;
     }
-    setStep(step + 1)
-    setProgress(progress + 25)
-  }
+    setStep(step + 1);
+    setProgress(progress + 25);
+  };
 
   const prevStep = () => {
-    setStep(step - 1)
-    setProgress(progress - 25)
-  }
+    setStep(step - 1);
+    setProgress(progress - 25);
+  };
 
   const sendVerificationCode = () => {
-    console.log("Sending verification code...")
+    console.log("Sending verification code...");
     if (!isVerified) {
-      // Here you would typically send a verification code to the user's email
-      toast.success("Verification code sent to your email")
-      setIsEmailSent(true)
-      setResendTimer(30)
+      axios
+        .post("/api/mailer/mailauth", { email: formData.email })
+        .then((response) => {
+          toast.success("Verification code sent to your email");
+          setIsEmailSent(true);
+          setResendTimer(30);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  }
+  };
 
   const verifyEmail = async () => {
     try {
-      // Simulating API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      // Assuming the verification is successful
-      setIsVerified(true)
-      toast.success("Email verified successfully!")
-      
+      // Make API call
+      const response = await axios.post("/api/auth/verifyotp", {
+        email: formData.email,
+        otp: verificationCode
+      });
+  
+      // Handle successful response (status 200)
+      console.log(response.data.message);
+      setIsVerified(true);
+      setVerifymsg(response.data.message);
+      toast.success("Email verified successfully!");
+  
       // Trigger confetti animation
       confetti({
         particleCount: 100,
         spread: 70,
-        origin: { y: 0.6 }
-      })
+        origin: { y: 0.6 },
+      });
+
+      
+
     } catch (error) {
-      toast.error("Verification failed. Please try again.")
+      // Handle error response (e.g., status 400)
+      if (error.response && error.response.status === 400) {
+        console.log(error.response.data.message);
+        setVerifymsg(error.response.data.message); // Set the message for invalid OTP
+        toast.error("Invalid OTP. Please try again.");
+      } else {
+        // Handle other errors (e.g., network errors, server errors)
+        console.error(error);
+        toast.error("Verification failed. Please try again.");
+      }
     }
-  }
+  };
+  
 
   const handleSubmit = () => {
-    const errors = validateStep()
+    const errors = validateStep();
     if (errors.length > 0) {
-      errors.forEach(error => toast.error(error))
-      return
+      errors.forEach((error) => toast.error(error));
+      return;
     }
-    // Here you would typically send the formData to your backend
-    console.log(formData)
-    toast.success("Registration complete!")
-  }
+    
+    axios.post("/api/auth/register", formData).then((response) => {
+      console.log(response.data);
+      toast.success("Registration complete!");
+      setTimeout(() => {
+        router.push("/register/thank-you");
+      }, 1000);
+    })
+    .catch((error) => {
+      toast.error("Registration failed. Please try again.");
+      console.log(error);
+    });
+  };
 
   const formVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 50 }
-  }
+    exit: { opacity: 0, x: 50 },
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 to-purple-200 flex items-center justify-center p-4 relative overflow-hidden font-Outfit">
@@ -188,15 +259,19 @@ export function RegisterPageComponent() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-lg shadow-xl p-8 w-full max-w-2xl relative z-10">
-        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">Join Suhaag</h1>
+        className="bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-lg shadow-xl p-8 w-full max-w-2xl relative z-10"
+      >
+        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+          Join Suhaag
+        </h1>
         <div className="mb-8">
           <div className="h-2 bg-gray-200 rounded-full">
             <motion.div
               className="h-full bg-pink-500 rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.5 }}></motion.div>
+              transition={{ duration: 0.5 }}
+            ></motion.div>
           </div>
           <div className="flex justify-between mt-2">
             <span className="text-sm font-medium text-gray-600">Start</span>
@@ -212,8 +287,11 @@ export function RegisterPageComponent() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl font-semibold mb-4 flex items-center"><User className="mr-2" /> Personal Details</h2>
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-2xl font-semibold mb-4 flex items-center">
+                <User className="mr-2" /> Personal Details
+              </h2>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
@@ -223,7 +301,8 @@ export function RegisterPageComponent() {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      placeholder="Enter your first name" />
+                      placeholder="Enter your first name"
+                    />
                   </div>
                   <div>
                     <Label htmlFor="lastName">Last Name*</Label>
@@ -232,7 +311,8 @@ export function RegisterPageComponent() {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      placeholder="Enter your last name" />
+                      placeholder="Enter your last name"
+                    />
                   </div>
                 </div>
                 <div>
@@ -243,7 +323,8 @@ export function RegisterPageComponent() {
                     type="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="Enter your email" />
+                    placeholder="Enter your email"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="phoneNumber">Phone Number*</Label>
@@ -252,7 +333,8 @@ export function RegisterPageComponent() {
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleInputChange}
-                    placeholder="Enter your phone number" />
+                    placeholder="Enter your phone number"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="dob">Date of Birth*</Label>
@@ -261,7 +343,8 @@ export function RegisterPageComponent() {
                     name="dob"
                     type="date"
                     value={formData.dob}
-                    onChange={handleInputChange} />
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="address">Address*</Label>
@@ -270,14 +353,18 @@ export function RegisterPageComponent() {
                     name="address"
                     value={formData.address}
                     onChange={handleInputChange}
-                    placeholder="Enter your address" />
+                    placeholder="Enter your address"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="gender">Gender*</Label>
                   <Select
                     name="gender"
                     value={formData.gender}
-                    onValueChange={(value) => handleSelectChange("gender", value)}>
+                    onValueChange={(value) =>
+                      handleSelectChange("gender", value)
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select your gender" />
                     </SelectTrigger>
@@ -293,7 +380,10 @@ export function RegisterPageComponent() {
                   <Select
                     name="lookingFor"
                     value={formData.lookingFor}
-                    onValueChange={(value) => handleSelectChange("lookingFor", value)}>
+                    onValueChange={(value) =>
+                      handleSelectChange("lookingFor", value)
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select your Preference" />
                     </SelectTrigger>
@@ -311,7 +401,8 @@ export function RegisterPageComponent() {
                       name="ageFrom"
                       value={formData.ageFrom}
                       onChange={handleInputChange}
-                      placeholder="Enter minimum age" />
+                      placeholder="Enter minimum age"
+                    />
                   </div>
                   <div>
                     <Label htmlFor="ageTo">Age To*</Label>
@@ -320,7 +411,8 @@ export function RegisterPageComponent() {
                       name="ageTo"
                       value={formData.ageTo}
                       onChange={handleInputChange}
-                      placeholder="Enter maximum age" />
+                      placeholder="Enter maximum age"
+                    />
                   </div>
                 </div>
               </div>
@@ -334,22 +426,32 @@ export function RegisterPageComponent() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl font-semibold mb-4 flex items-center"><Briefcase className="mr-2" /> Career Details</h2>
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-2xl font-semibold mb-4 flex items-center">
+                <Briefcase className="mr-2" /> Career Details
+              </h2>
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="education">Highest Education*</Label>
                   <Select
                     name="education"
                     value={formData.education}
-                    onValueChange={(value) => handleSelectChange("education", value)}>
+                    onValueChange={(value) =>
+                      handleSelectChange("education", value)
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select your highest education" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="highschool">High School</SelectItem>
-                      <SelectItem value="bachelors">Bachelor&apos;s Degree</SelectItem>
-                      <SelectItem value="masters">Master&apos;s Degree</SelectItem>
+                      <SelectItem value="bachelors">
+                        Bachelor&apos;s Degree
+                      </SelectItem>
+                      <SelectItem value="masters">
+                        Master&apos;s Degree
+                      </SelectItem>
                       <SelectItem value="phd">Ph.D.</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
@@ -362,7 +464,8 @@ export function RegisterPageComponent() {
                     name="course"
                     value={formData.course}
                     onChange={handleInputChange}
-                    placeholder="Enter your pursued Course" />
+                    placeholder="Enter your pursued Course"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="occupation">Occupation</Label>
@@ -371,21 +474,27 @@ export function RegisterPageComponent() {
                     name="occupation"
                     value={formData.occupation}
                     onChange={handleInputChange}
-                    placeholder="Enter your occupation" />
+                    placeholder="Enter your occupation"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="annualIncome">Annual Income*</Label>
                   <Select
                     name="annualIncome"
                     value={formData.annualIncome}
-                    onValueChange={(value) => handleSelectChange("annualIncome", value)}>
+                    onValueChange={(value) =>
+                      handleSelectChange("annualIncome", value)
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select your income range" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="0-25k">$0 - $25,000</SelectItem>
                       <SelectItem value="25k-50k">$25,000 - $50,000</SelectItem>
-                      <SelectItem value="50k-100k">$50,000 - $100,000</SelectItem>
+                      <SelectItem value="50k-100k">
+                        $50,000 - $100,000
+                      </SelectItem>
                       <SelectItem value="100k+">$100,000+</SelectItem>
                     </SelectContent>
                   </Select>
@@ -397,7 +506,8 @@ export function RegisterPageComponent() {
                     name="workLocation"
                     value={formData.workLocation}
                     onChange={handleInputChange}
-                    placeholder="Enter your work location" />
+                    placeholder="Enter your work location"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -410,14 +520,20 @@ export function RegisterPageComponent() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl font-semibold mb-4 flex items-center"><Heart className="mr-2" /> Additional Details</h2>
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-2xl font-semibold mb-4 flex items-center">
+                <Heart className="mr-2" /> Additional Details
+              </h2>
               <div className="space-y-4">
                 <div>
                   <Label>Marital Status*</Label>
                   <RadioGroup
                     value={formData.maritalStatus}
-                    onValueChange={(value) => handleSelectChange("maritalStatus", value)}>
+                    onValueChange={(value) =>
+                      handleSelectChange("maritalStatus", value)
+                    }
+                  >
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="single" id="single" />
                       <Label htmlFor="single">Single</Label>
@@ -437,7 +553,10 @@ export function RegisterPageComponent() {
                   <Select
                     name="religion"
                     value={formData.religion}
-                    onValueChange={(value) => handleSelectChange("religion", value)}>
+                    onValueChange={(value) =>
+                      handleSelectChange("religion", value)
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select your religion" />
                     </SelectTrigger>
@@ -455,7 +574,8 @@ export function RegisterPageComponent() {
                   <Select
                     name="diet"
                     value={formData.diet}
-                    onValueChange={(value) => handleSelectChange("diet", value)}>
+                    onValueChange={(value) => handleSelectChange("diet", value)}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select your diet preference" />
                     </SelectTrigger>
@@ -469,15 +589,27 @@ export function RegisterPageComponent() {
                 <div>
                   <Label>Interests</Label>
                   <div className="grid grid-cols-2 gap-2">
-                    {['Reading', 'Traveling', 'Music', 'Sports', 'Cooking', 'Movies'].map((interest) => (
-                      <div key={interest} className="flex items-center space-x-2">
+                    {[
+                      "Reading",
+                      "Traveling",
+                      "Music",
+                      "Sports",
+                      "Cooking",
+                      "Movies",
+                    ].map((interest) => (
+                      <div
+                        key={interest}
+                        className="flex items-center space-x-2"
+                      >
                         <Checkbox
                           id={interest.toLowerCase()}
                           checked={formData.interests.includes(interest)}
-                          onCheckedChange={() => handleCheckboxChange(interest)} />
+                          onCheckedChange={() => handleCheckboxChange(interest)}
+                        />
                         <label
                           htmlFor={interest.toLowerCase()}
-                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
                           {interest}
                         </label>
                       </div>
@@ -491,7 +623,8 @@ export function RegisterPageComponent() {
                     name="about"
                     value={formData.about}
                     onChange={handleInputChange}
-                    placeholder="Tell us about yourself" />
+                    placeholder="Tell us about yourself"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -504,33 +637,54 @@ export function RegisterPageComponent() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl font-semibold mb-4 flex items-center"><Mail className="mr-2" /> Email Verification</h2>
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-2xl font-semibold mb-4 flex items-center">
+                <Mail className="mr-2" /> Email Verification
+              </h2>
               <div className="space-y-4">
-                <p>We&apos;ve sent a verification code to your email. Please enter it below to complete your registration.</p>
+                <p>
+                  We&apos;ve sent a verification code to your email. Please
+                  enter it below to complete your registration.
+                </p>
                 <div>
                   <Label htmlFor="verificationCode">Verification Code*</Label>
                   <Input
                     id="verificationCode"
                     value={verificationCode}
                     onChange={(e) => setVerificationCode(e.target.value)}
-                    placeholder="Enter verification code" />
+                    placeholder="Enter verification code"
+                  />
                 </div>
                 <div className="flex justify-between items-center">
-                  <Button 
-                    onClick={sendVerificationCode} 
-                    variant="outline" 
+                  <Button
+                    onClick={sendVerificationCode}
+                    variant="outline"
                     disabled={resendTimer > 0 || isVerified}
                   >
-                    {resendTimer > 0 ? `Resend in ${resendTimer}s` : 'Resend Code'}
+                    {resendTimer > 0
+                      ? `Resend in ${resendTimer}s`
+                      : "Resend Code"}
                   </Button>
                   <Button onClick={verifyEmail} disabled={isVerified}>
                     {isVerified ? (
-                      <><CheckCircle className="mr-2 h-4 w-4" /> Verified</>
+                      <>
+                        <CheckCircle className="mr-2 h-4 w-4" /> Verified
+                      </>
                     ) : (
-                      'Verify Email'
+                      "Verify Email"
                     )}
                   </Button>
+                </div>
+                <div>
+                  <Label htmlFor="Password">Password*</Label>
+                  <Input
+                    id="Password"
+                    value={formData.password}
+                    name="password"
+                    onChange={handleInputChange}
+                    placeholder="Enter Password"
+                  />
                 </div>
                 {isVerified && (
                   <motion.div
@@ -538,7 +692,7 @@ export function RegisterPageComponent() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-green-600 font-semibold text-center"
                   >
-                    Email verified successfully!
+                    {verifymsg}
                   </motion.div>
                 )}
               </div>
@@ -557,7 +711,11 @@ export function RegisterPageComponent() {
               Next <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           ) : (
-            <Button onClick={handleSubmit} className="ml-auto bg-pink-500 hover:bg-pink-600" disabled={!isVerified}>
+            <Button
+              onClick={handleSubmit}
+              className="ml-auto bg-pink-500 hover:bg-pink-600"
+              disabled={!isVerified}
+            >
               Complete Registration
             </Button>
           )}

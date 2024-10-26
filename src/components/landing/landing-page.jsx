@@ -29,10 +29,10 @@ export function LandingPageComponent() {
   };
 
   return (
-    <motion.div
-      initial={{ scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 0.6, duration: 0.8 }}
+    <div
+      // initial={{ scale: 0.9, opacity: 0 }}
+      // animate={{ scale: 1, opacity: 1 }}
+      // transition={{ delay: 0.6, duration: 0.8 }}
       className="w-full max-w-6xl mx-auto bg-black bg-opacity-20 backdrop-blur-sm max-md:backdrop-blur-[2px] p-8 max-md:p-4 rounded-lg font-normal font-Outfit">
       
       <form className="grid grid-cols-1 md:grid-cols-2 gap-4 max-md:gap-2 w-full">
@@ -91,8 +91,8 @@ export function LandingPageComponent() {
             </SelectContent>
           </Select>
           
-          <Select onValueChange={(value) => handleSelectChange('motherTongue', value)}>
-            <SelectTrigger className="w-full bg-white">
+          <Select onValueChange={(value) => handleSelectChange('motherTongue', value)} className="max-md:hidden">
+            <SelectTrigger className="w-full bg-white max-md:hidden">
               <SelectValue placeholder="Mother Tongue" />
             </SelectTrigger>
             <SelectContent>
@@ -114,6 +114,6 @@ export function LandingPageComponent() {
           </Button>
         </div>
       </form>
-    </motion.div>
+    </div>
   );
 }

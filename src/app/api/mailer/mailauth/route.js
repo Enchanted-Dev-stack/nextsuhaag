@@ -1,10 +1,14 @@
 import nodemailer from "nodemailer";
+import { connectDb } from "../../db/connection";
+import { OTP } from "../../db/models/otp";
+
+connectDb();
 
 export async function POST(request) {
   const body = await request.json();
   const { email } = body;
 
-  const password = Math.random().toString(36).slice(-8);
+  const password = Math.floor(10000 + Math.random() * 90000).toString();
 
   const transporter = nodemailer.createTransport({
     // service: 'gmail',
@@ -118,6 +122,13 @@ export async function POST(request) {
 
   try {
     await transporter.sendMail(mailOptions);
+
+    await OTP.findOneAndUpdate(
+        { email },             // Find document with this email
+        { otp: password },     // Update OTP with new value
+        { upsert: true, new: true, setDefaultsOnInsert: true } // Options: create if not found
+      );
+
     return new Response(JSON.stringify({ message: "Mail sent successfully" }), {
       status: 200,
     });

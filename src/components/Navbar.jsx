@@ -35,7 +35,7 @@ const services = [
 
 import logo from "../Assets/Images/logo1.png";
 
-function Navbar() {
+function Navbar(props) {
   const [OpenNav, setOpenNav] = useState(false);
   const router = useRouter();
   const {currentUser, logout} = useAuth();
@@ -43,7 +43,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`sticky Navbar w-full top-0 left-0 px-2 bg-opacity-60 backdrop-blur-sm lg:shadow-none py-2 lg:py-1 flex items-center justify-between border-none h-26 bg-[#fae3ea] z-[1000]`}
+      className={`Navbar w-full top-0 left-0 px-2 ${props.variant == "clear" ? "absolute bg-transparent" : "sticky bg-opacity-60 backdrop-blur-sm bg-[#fae3ea]"}  lg:shadow-none py-2 lg:py-1 flex items-center justify-between border-none h-26 z-[1000]`}
     >
       <div className="logo h-full flex items-center justify-center">
         
@@ -65,11 +65,11 @@ function Navbar() {
           <i className="fa-solid fa-bars"></i>
         </div>
       <div
-        className={`flex flex-col  shadow-lg lg:shadow-none lg:flex-row justify-center items-center gap-4 font-semibold text-sm lg:relative absolute top-0 left-0 bottom-0 h-screen lg:h-auto bg-white lg:bg-transparent transition-all duration-300 ${
+        className={`${props.variant == "clear" ? "bg-black bg-opacity-60 backdrop-blur-lg lg:bg-transparent lg:bg-opacity-0 lg:backdrop-blur-none" : "bg-white"} flex flex-col  shadow-lg lg:shadow-none lg:flex-row justify-center items-center gap-4 font-semibold text-sm lg:relative absolute top-0 left-0 bottom-0 h-screen lg:h-auto lg:bg-transparent transition-all duration-300 ${
           OpenNav ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        <div className="menu font-Inter bg-white lg:bg-inherit w-[90vw] max-w-[300px] xs:max-w-[400px] lg:max-w-full lg:w-min">
+        <div className="menu font-Inter lg:bg-inherit w-[90vw] max-w-[300px] xs:max-w-[400px] lg:max-w-full lg:w-min">
           <div
             className={`absolute lg:hidden ${
               OpenNav ? "scale-100" : "scale-0"
@@ -79,21 +79,21 @@ function Navbar() {
             <ion-icon name="close-outline" ></ion-icon>
           </div>
           <ul className="flex justify-center items-center gap-4 text-primary font-normal flex-col lg:flex-row ">
-            <a href="#" className="text-black font-Montserrat font-medium">
+            <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
               <li>
                 {/* <Button color="primary" variant="light"> */}
                 Home
                 {/* </Button> */}
               </li>
             </a>
-            <a href="#" className="text-black font-Montserrat font-medium">
+            <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
               <li>
                 {/* <Button color="primary" variant="light" className="px-3 py-1"> */}
                 Decorators
                 {/* </Button> */}
               </li>
             </a>
-            <a href="#" className="text-black font-Montserrat font-medium">
+            <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
               <li>
                 {/* <Button color="primary" variant="light"> */}
                 Photographers
@@ -102,7 +102,7 @@ function Navbar() {
             </a>
             <a
               href={"/gallery"}
-              className="text-black font-Montserrat font-medium"
+              className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}
             >
               <li>
                 {/* <Button color="primary" variant="light"> */}
@@ -112,7 +112,7 @@ function Navbar() {
             </a>
             <a
               href={"/contact"}
-              className="text-black font-Montserrat font-medium"
+              className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}
             >
               <li>
                 {/* <Button color="primary" variant="light"> */}

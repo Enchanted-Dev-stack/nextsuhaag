@@ -16,12 +16,12 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
-      <main className="relative top-0 left-0 font-bold bg-[#fae3ea]">
-        <div className="top bg-[#fae3ea] backdrop-blur-sm from-blue-200 to-slate-00 max-h-screen w-screen aspect-video flex overflow-hidden">
-          <Image src={bgimage} alt="" className="absolute top-0 left-0" />
-          <div className="w-full  h-full flex flex-col items-center justify-center font-Outfit">
-            <p className="text-lg sm:text-4xl font-serif font-light">
+      <Navbar variant="clear"/>
+      <main className="relative top-0 left-0 font-bold bg-[#fae3ea] h-full">
+        <div className="top  backdrop-blur-sm from-blue-500 to-slate-00 max-h-screen w-screen aspect-[27.5/9] max-md:min-h-[100svh] min-h-[600px] flex overflow-hidden">
+          <img src={"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaW63vLmLuAouBASiAjipX7pkKu9_00KaJth8xIdxBI08kRa32mxRpkNkMdYy0aaA4KYJeStJEjhhq35PSutGT8L05dLQykKpLPQT5EnHV5bPTP73xYgyczir6mPPnKthuaAKCyZBDlkyASppgmu-y4VkORsJIjDC9gzYoL_Yo6D1saIOv07anrLOAlwJz/s7700/Untitled%20design%20-%202024-10-26T215346.141.webp"} alt="" className="absolute top-0 left-0 w-full h-full object-cover" />
+          <div className="w-full  h-full flex flex-col items-center justify-end font-Outfit pb-10 max-sm:pb-0">
+            {/* <p className="text-lg sm:text-4xl font-serif font-light">
               Find Your
             </p>
             <p className="text-2xl sm:text-5xl lg:text-6xl text-red-500">
@@ -34,7 +34,7 @@ export default function Home() {
             </p>
             <p className="font-normal text-xs sm:text-sm lg:text-lg text-red-400 max-sm:hidden">
               The most trusted matchmaking service
-            </p>
+            </p> */}
             {/* <Button
               color="primary"
               className="flex items-center text-white text-xs sm:text-sm mt-6 w-[150px] sm:w-auto"
@@ -44,14 +44,14 @@ export default function Home() {
                 <i class="fa-regular fa-heart"></i>
               </span>
             </Button> */}
-            <div className="px-5 w-full max-md:hidden">
+            <div className="px-20 max-md:px-0 w-full ">
               <LandingPageComponent />
             </div>
           </div>
         </div>
-        <div className="px-5 w-full max-md:block hidden bg-[#fae3ea]">
+        {/* <div className="px-5 max-md:px-0 w-full max-md:block hidden bg-[#fae3ea]">
           <LandingPageComponent />
-        </div>
+        </div> */}
         <div className="stepsarea text-center max-sm:px-2">
           <Features />
         </div>

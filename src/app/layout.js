@@ -104,7 +104,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${space.variable} ${kaushan.variable} ${outfit.variable} ${kalam.variable} ${bad.variable} ${playfair.variable} ${montserrat.variable} ${raleway.variable} ${allura.variable} ${calli.variable} ${caveat.variable} ${poppins.variable}`}>
+      <body className={`${inter.variable} ${space.variable} ${kaushan.variable} ${outfit.variable} ${kalam.variable} ${bad.variable} ${playfair.variable} ${montserrat.variable} ${raleway.variable} ${allura.variable} ${calli.variable} ${caveat.variable} ${poppins.variable} h-full`}>
         <NextUIProvider>
           <AuthProvider>
             {/* <Redirect /> */}
