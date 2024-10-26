@@ -46,7 +46,7 @@ export function ThankYouPageComponent() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-gray-600 mb-6">
-          Your journey to finding love begins here. We've received your details and are excited to help you find your perfect match!
+          Your journey to finding love begins here. We`&apos;ve received your details and are excited to help you find your perfect match!
         </motion.p>
         <motion.div
           initial={{ scale: 0 }}
@@ -54,7 +54,7 @@ export function ThankYouPageComponent() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="bg-pink-100 rounded-lg p-4 mb-6">
           <p className="text-pink-800 font-semibold">
-            "Love is not about finding the right person, but creating a right relationship. It's not about how much love you have in the beginning but how much love you build till the end."
+          `&apos;`&apos;Love is not about finding the right person, but creating a right relationship. It`&apos;s not about how much love you have in the beginning but how much love you build till the end.`&apos;`&apos;
           </p>
         </motion.div>
         <motion.button
