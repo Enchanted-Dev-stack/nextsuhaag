@@ -19,7 +19,9 @@ export function RegisterPageComponent() {
   const [step, setStep] = useState(1)
   const [progress, setProgress] = useState(0)
   const [verificationCode, setVerificationCode] = useState('')
+  const [isEmailSent, setIsEmailSent] = useState(false)
   const [isVerified, setIsVerified] = useState(false)
+  const [resendTimer, setResendTimer] = useState(0)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -59,6 +61,22 @@ export function RegisterPageComponent() {
     }));
   }, [searchParams]);
 
+  useEffect(() => {
+    if (step === 4 && !isEmailSent) {
+      sendVerificationCode()
+    }
+  }, [step, isEmailSent])
+
+  useEffect(() => {
+    let interval
+    if (resendTimer > 0) {
+      interval = setInterval(() => {
+        setResendTimer(prevTimer => prevTimer - 1)
+      }, 1000)
+    }
+    return () => clearInterval(interval)
+  }, [resendTimer])
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prevData => ({
@@ -84,27 +102,7 @@ export function RegisterPageComponent() {
   }
 
   const validateStep = () => {
-    const errors = []
-    if (step === 1) {
-      if (!formData.firstName) errors.push("First name is required")
-      if (!formData.lastName) errors.push("Last name is required")
-      if (!formData.email) errors.push("Email is required")
-      if (!/\S+@\S+\.\S+/.test(formData.email)) errors.push("Email is invalid")
-      if (!formData.phoneNumber) errors.push("Phone number is required")
-      if (!/^\d{10}$/.test(formData.phoneNumber)) errors.push("Phone number is invalid")
-      if (!formData.dob) errors.push("Date of birth is required")
-      if (!formData.gender) errors.push("Gender is required")
-    } else if (step === 2) {
-      if (!formData.education) errors.push("Education is required")
-      if (!formData.occupation) errors.push("Occupation is required")
-      if (!formData.annualIncome) errors.push("Annual income is required")
-    } else if (step === 3) {
-      if (!formData.maritalStatus) errors.push("Marital status is required")
-      if (!formData.religion) errors.push("Religion is required")
-    } else if (step === 4) {
-      if (!isVerified) errors.push("Email verification is required")
-    }
-    return errors
+    return true
   }
 
   const nextStep = () => {
@@ -123,12 +121,16 @@ export function RegisterPageComponent() {
   }
 
   const sendVerificationCode = () => {
-    // Here you would typically send a verification code to the user's email
-    toast.success("Verification code sent to your email")
+    console.log("Sending verification code...")
+    if (!isVerified) {
+      // Here you would typically send a verification code to the user's email
+      toast.success("Verification code sent to your email")
+      setIsEmailSent(true)
+      setResendTimer(30)
+    }
   }
 
   const verifyEmail = async () => {
-    // Here you would typically verify the code with your API
     try {
       // Simulating API call
       await new Promise(resolve => setTimeout(resolve, 1000))
@@ -374,7 +376,6 @@ export function RegisterPageComponent() {
                 <div>
                   <Label htmlFor="annualIncome">Annual Income*</Label>
                   <Select
-                    
                     name="annualIncome"
                     value={formData.annualIncome}
                     onValueChange={(value) => handleSelectChange("annualIncome", value)}>
@@ -506,7 +507,7 @@ export function RegisterPageComponent() {
               transition={{ duration: 0.5 }}>
               <h2 className="text-2xl font-semibold mb-4 flex items-center"><Mail className="mr-2" /> Email Verification</h2>
               <div className="space-y-4">
-                <p>We've sent a verification code to your email [{formData.email}]. Please enter it below to complete your registration.</p>
+                <p>We've sent a verification code to your email. Please enter it below to complete your registration.</p>
                 <div>
                   <Label htmlFor="verificationCode">Verification Code*</Label>
                   <Input
@@ -516,7 +517,13 @@ export function RegisterPageComponent() {
                     placeholder="Enter verification code" />
                 </div>
                 <div className="flex justify-between items-center">
-                  <Button onClick={sendVerificationCode} variant="outline">Resend Code</Button>
+                  <Button 
+                    onClick={sendVerificationCode} 
+                    variant="outline" 
+                    disabled={resendTimer > 0 || isVerified}
+                  >
+                    {resendTimer > 0 ? `Resend in ${resendTimer}s` : 'Resend Code'}
+                  </Button>
                   <Button onClick={verifyEmail} disabled={isVerified}>
                     {isVerified ? (
                       <><CheckCircle className="mr-2 h-4 w-4" /> Verified</>
