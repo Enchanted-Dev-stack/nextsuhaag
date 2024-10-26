@@ -110,7 +110,7 @@ export function LandingPageComponent() {
             className="w-full bg-pink-600 text-white hover:bg-pink-700"
             onClick={handleSubmit}
           >
-            Let's Begin
+            Let&apos;s Begin
           </Button>
         </div>
       </form>

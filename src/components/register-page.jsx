@@ -348,8 +348,8 @@ export function RegisterPageComponent() {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="highschool">High School</SelectItem>
-                      <SelectItem value="bachelors">Bachelor's Degree</SelectItem>
-                      <SelectItem value="masters">Master's Degree</SelectItem>
+                      <SelectItem value="bachelors">Bachelor&apos;s Degree</SelectItem>
+                      <SelectItem value="masters">Master&apos;s Degree</SelectItem>
                       <SelectItem value="phd">Ph.D.</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
@@ -507,7 +507,7 @@ export function RegisterPageComponent() {
               transition={{ duration: 0.5 }}>
               <h2 className="text-2xl font-semibold mb-4 flex items-center"><Mail className="mr-2" /> Email Verification</h2>
               <div className="space-y-4">
-                <p>We've sent a verification code to your email. Please enter it below to complete your registration.</p>
+                <p>We&apos;ve sent a verification code to your email. Please enter it below to complete your registration.</p>
                 <div>
                   <Label htmlFor="verificationCode">Verification Code*</Label>
                   <Input
