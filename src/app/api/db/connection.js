@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const connection_string = process.env.MONGO_URI;
 
 export const connectDb = async () => {
+
     try {
         const connection = await mongoose.connect(connection_string, {
             dbName: 'Suhaag-Matrimony',
@@ -12,4 +13,5 @@ export const connectDb = async () => {
     } catch (error) {
         console.error('Error connecting to MongoDB:', error.message || error);
     }
+    
 };
