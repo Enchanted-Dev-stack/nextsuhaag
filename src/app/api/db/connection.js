@@ -3,16 +3,13 @@ const connection_string = process.env.MONGO_URI;
 
 export const connectDb = async () => {
     try {
-        const { connection } = await mongoose.connect(connection_string, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+        const connection = await mongoose.connect(connection_string, {
             dbName: 'Suhaag-Matrimony',
-        })
+        });
 
         console.log('Connected to MongoDB');
-        console.log(connection.db.databaseName);
+        console.log(connection.connection.db.databaseName); // Database name verification
     } catch (error) {
-        console.log('Error connecting to MongoDB');
-        console.log(error);
+        console.error('Error connecting to MongoDB:', error.message || error);
     }
 };
