@@ -20,7 +20,7 @@ export default function Home() {
       <meta property="og:image:type" content="<generated>" />
       <meta property="og:image:width" content="<generated>" />
       <meta property="og:image:height" content="<generated>" />
-      <main className="relative top-0 left-0 font-bold bg-[#252021] h-full">
+      <main className="relative top-0 left-0 font-bold bg-[#fae3ea] h-full">
         <div className="top  backdrop-blur-sm from-blue-500 to-slate-00 max-h-screen w-screen aspect-[27.5/9] max-md:min-h-[100svh] min-h-[600px] flex overflow-hidden">
           <img
             src="/assets/images/landing/landing.webp"
