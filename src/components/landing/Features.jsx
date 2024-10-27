@@ -1,5 +1,5 @@
 "use client";
-import { Heart, MessageCircle, Users } from 'lucide-react'
+import { BadgeCheck, EarthLock, UsersRound } from 'lucide-react'
 import React from 'react'
 import { motion } from 'framer-motion'
 
@@ -13,20 +13,20 @@ function Features() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   {
-                    icon: Users,
+                    icon: UsersRound,
                     title: "Millions of Profiles",
                     description:
-                      "Access to a vast database of eligible singles",
+                      "Search by location, profession, community & more",
                   },
                   {
-                    icon: Heart,
-                    title: "Advanced Matching",
-                    description: "Smart algorithms to find your perfect match",
+                    icon: BadgeCheck,
+                    title: "Verified by Visit",
+                    description: "We strictly verify & collect every single profile by personal visit",
                   },
                   {
-                    icon: MessageCircle,
-                    title: "Secure Communication",
-                    description: "Safe and private messaging system",
+                    icon: EarthLock,
+                    title: "100% Privacy",
+                    description: "We maintain 100% privacy. No one can see your details, pictures & number without your permission",
                   },
                 ].map((feature, index) => (
                   <motion.div

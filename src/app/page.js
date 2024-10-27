@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import bgimage from "../Assets/Images/Landing/bg.png";
 import BestSite from "../components/BestSite";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,10 +15,18 @@ export default function Home() {
 
   return (
     <>
-      <Navbar variant="clear"/>
-      <main className="relative top-0 left-0 font-bold bg-[#fae3ea] h-full">
+      <Navbar variant="clear" />
+      <meta property="og:image" content="<generated>" />
+      <meta property="og:image:type" content="<generated>" />
+      <meta property="og:image:width" content="<generated>" />
+      <meta property="og:image:height" content="<generated>" />
+      <main className="relative top-0 left-0 font-bold bg-[#252021] h-full">
         <div className="top  backdrop-blur-sm from-blue-500 to-slate-00 max-h-screen w-screen aspect-[27.5/9] max-md:min-h-[100svh] min-h-[600px] flex overflow-hidden">
-          <img src={"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJzRMGH9v9rglCVgNj-fPknO9ndios7CqsUv7WRbNHyLcpBvW8MU42r7Q58drZV8bxN5soQili7Jl-oEr8A9w7gPTxoOxO2ayZvj_PmLshUcKjbwmRy3ghfqpeOYFcEXJYO6mTJ_2ArTyv8kMC7LURsSqc9mI5q_BYR1fHBjII0VnttEJKv6blfsoFlhID/s7700/Untitled%20design%20-%202024-10-27T003345.004.webp"} alt="" className="absolute top-0 left-0 w-full h-full object-cover" />
+          <img
+            src="/assets/images/landing/landing.webp"
+            alt=""
+            className="absolute top-0 left-0 w-full h-full object-cover"
+          />
           <div className="w-full  h-full flex flex-col items-center justify-end font-Outfit pb-10 max-sm:pb-0">
             {/* <p className="text-lg sm:text-4xl font-serif font-light">
               Find Your
@@ -60,9 +67,7 @@ export default function Home() {
         </div>
         <div className="py-5 px-5 bg-white  rounded-t-3xl">
           <h2 className="font-SpaceMono text-lg">Our Services</h2>
-          <div
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-2 lg:gap-4 "
-          >
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-2 lg:gap-4 ">
             {/* flex justify-evenly gap-2 lg:gap-4 overflow-auto py-2 */}
 
             <Card
@@ -91,9 +96,9 @@ export default function Home() {
             />
           </div>
         </div>
-          <div>
-            <MarqueeFeatures />
-          </div>
+        <div>
+          <MarqueeFeatures />
+        </div>
       </main>
       <Footer />
     </>

@@ -2,6 +2,7 @@ import { Button } from "@nextui-org/react";
 import React from "react";
 import ArrowIcon from "../Icons/ArrowIcon";
 import ListItem from "./ListItem";
+import { Fingerprint, HeartHandshake, UserRound } from "lucide-react";
 
 function BestSite() {
   return (
@@ -25,9 +26,9 @@ function BestSite() {
         </Button>
       </div>
       <div className="rightarea w-full xs:w-[80%] lg:w-[50%] xl:w-[43%] flex flex-col justify-between">
-        <ListItem variant="solid" icon="user" heading="100% Manually screened Profiles" desc="Search by Location, Community, Profession and more from Lakhs of active profiles" />
-        <ListItem variant="regular" icon="star" heading="Verification" desc="Special listing of profiles verified by our agents through personal visit" />
-        <ListItem variant="solid" icon="fingerprint" heading="Privacy" desc="Restrict Unwanted access to contact details or Photos/Videos" />
+        <ListItem icon={<UserRound size={35} color="black"/>} heading="100% screened Profiles" desc="Search by Location, Community, Profession and more from Lakhs of active profiles" />
+        <ListItem icon={<HeartHandshake size={35} color="black"/>} heading="Our Promise" desc="We promises we will charge No money to girls/women who is not able to afford for her wedding" />
+        <ListItem icon={<Fingerprint size={35} color="black"/>} heading="Authenticity" desc="We charge the money only for our hard work after we will find a suitable partner for you and fix your marriage." />
       </div>
     </div>
   );
