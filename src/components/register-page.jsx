@@ -120,27 +120,27 @@ export function RegisterPageComponent() {
   };
 
   const validateStep = () => {
-    const errors = []
-    if (step === 1) {
-      if (!formData.firstName) errors.push("First name is required")
-      if (!formData.lastName) errors.push("Last name is required")
-      if (!formData.email) errors.push("Email is required")
-      if (!/\S+@\S+\.\S+/.test(formData.email)) errors.push("Email is invalid")
-      if (!formData.phoneNumber) errors.push("Phone number is required")
-      if (!/^\d{10}$/.test(formData.phoneNumber)) errors.push("Phone number is invalid")
-      if (!formData.dob) errors.push("Date of birth is required")
-      if (!formData.gender) errors.push("Gender is required")
-    } else if (step === 2) {
-      if (!formData.education) errors.push("Education is required")
-      if (!formData.occupation) errors.push("Occupation is required")
-      if (!formData.annualIncome) errors.push("Annual income is required")
-    } else if (step === 3) {
-      if (!formData.maritalStatus) errors.push("Marital status is required")
-      if (!formData.religion) errors.push("Religion is required")
-    } else if (step === 4) {
-      if (!isVerified) errors.push("Email verification is required")
-    }
-    return errors
+    // const errors = []
+    // if (step === 1) {
+    //   if (!formData.firstName) errors.push("First name is required")
+    //   if (!formData.lastName) errors.push("Last name is required")
+    //   if (!formData.email) errors.push("Email is required")
+    //   if (!/\S+@\S+\.\S+/.test(formData.email)) errors.push("Email is invalid")
+    //   if (!formData.phoneNumber) errors.push("Phone number is required")
+    //   if (!/^\d{10}$/.test(formData.phoneNumber)) errors.push("Phone number is invalid")
+    //   if (!formData.dob) errors.push("Date of birth is required")
+    //   if (!formData.gender) errors.push("Gender is required")
+    // } else if (step === 2) {
+    //   if (!formData.education) errors.push("Education is required")
+    //   if (!formData.occupation) errors.push("Occupation is required")
+    //   if (!formData.annualIncome) errors.push("Annual income is required")
+    // } else if (step === 3) {
+    //   if (!formData.maritalStatus) errors.push("Marital status is required")
+    //   if (!formData.religion) errors.push("Religion is required")
+    // } else if (step === 4) {
+    //   if (!isVerified) errors.push("Email verification is required")
+    // }
+    return true
   };
 
   const nextStep = () => {
@@ -490,12 +490,17 @@ export function RegisterPageComponent() {
                       <SelectValue placeholder="Select your income range" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="0-25k">$0 - $25,000</SelectItem>
-                      <SelectItem value="25k-50k">$25,000 - $50,000</SelectItem>
-                      <SelectItem value="50k-100k">
-                        $50,000 - $100,000
+                      <SelectItem value="upto 1 lakh">upto ₹ 1 Lakh</SelectItem>
+                      <SelectItem value="₹ 1 Lakh to ₹ 2 Lakh">₹ 1 Lakh to ₹ 2 Lakh</SelectItem>
+                      <SelectItem value="₹ 2 Lakh to ₹ 4 Lakh">
+                        ₹ 2 Lakh to ₹ 4 Lakh
                       </SelectItem>
-                      <SelectItem value="100k+">$100,000+</SelectItem>
+                      <SelectItem value="₹ 7 Lakh to ₹ 10 Lakh">₹ 7 Lakh to ₹ 10 Lakh</SelectItem>
+                      <SelectItem value="₹ 10 Lakh to ₹ 15 Lakh">₹ 10 Lakh to ₹ 15 Lakh</SelectItem>
+                      <SelectItem value="₹ 15 Lakh to ₹ 20 Lakh">₹ 15 Lakh to ₹ 20 Lakh</SelectItem>
+                      <SelectItem value="₹ 20 Lakh to ₹ 30 Lakh">₹ 20 Lakh to ₹ 30 Lakh</SelectItem>
+                      <SelectItem value="₹ 30 Lakh to ₹ 50 Lakh">₹ 30 Lakh to ₹ 50 Lakh</SelectItem>
+                      <SelectItem value="₹ 50 Lakh to ₹ 75 Lakh">₹ 50 Lakh to ₹ 75 Lakh</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -539,12 +544,16 @@ export function RegisterPageComponent() {
                       <Label htmlFor="single">Single</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="divorced" id="divorced" />
-                      <Label htmlFor="divorced">Divorced</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
                       <RadioGroupItem value="widowed" id="widowed" />
                       <Label htmlFor="widowed">Widowed</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="awaitingDivorce" id="awaitingDivorce" />
+                      <Label htmlFor="awaitingDivorce">Awaiting Divorce</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="divorced" id="divorced" />
+                      <Label htmlFor="divorced">Divorced</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -565,6 +574,7 @@ export function RegisterPageComponent() {
                       <SelectItem value="muslim">Muslim</SelectItem>
                       <SelectItem value="christian">Christian</SelectItem>
                       <SelectItem value="sikh">Sikh</SelectItem>
+                      <SelectItem value="jain">Jain</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
@@ -583,6 +593,7 @@ export function RegisterPageComponent() {
                       <SelectItem value="veg">Vegetarian</SelectItem>
                       <SelectItem value="nonveg">Non-vegetarian</SelectItem>
                       <SelectItem value="vegan">Vegan</SelectItem>
+                      <SelectItem value="Occasionally non veg">Occasionally non veg</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

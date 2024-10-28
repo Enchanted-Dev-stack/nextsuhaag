@@ -29,12 +29,13 @@ export function LandingPageComponent() {
   };
 
   return (
+    <>
+      <h2 className='relative text-3xl md:text-4xl text-white mb-5 text-center text-shadow-custom font-normal'>Connecting souls, <br className='md:hidden'/> Crafting stories</h2>
     <div
       // initial={{ scale: 0.9, opacity: 0 }}
       // animate={{ scale: 1, opacity: 1 }}
       // transition={{ delay: 0.6, duration: 0.8 }}
       className="w-full max-w-6xl mx-auto bg-black bg-opacity-20 backdrop-blur-sm max-md:backdrop-blur-[2px] p-8 max-md:p-4 rounded-lg font-normal font-Outfit">
-      
       <form className="grid grid-cols-1 md:grid-cols-2 gap-4 max-md:gap-2 w-full">
         {/* Form Fields */}
         <div className="space-y-4 max-md:space-y-2 text-red-600">
@@ -87,6 +88,7 @@ export function LandingPageComponent() {
               <SelectItem value="muslim">Muslim</SelectItem>
               <SelectItem value="christian">Christian</SelectItem>
               <SelectItem value="sikh">Sikh</SelectItem>
+              <SelectItem value="jain">Jain</SelectItem>
               <SelectItem value="other">Other</SelectItem>
             </SelectContent>
           </Select>
@@ -115,5 +117,6 @@ export function LandingPageComponent() {
         </div>
       </form>
     </div>
+    </>
   );
 }
