@@ -16,7 +16,7 @@ function Contact() {
             <div className="icon">
               <ion-icon name="chatbubbles-outline"></ion-icon>
             </div>
-            <a href="https://wa.me/+91xxxxxxx" target="_blank">
+            <a href="https://wa.me/+917723868292" target="_blank">
               <button className="bg-[#f31260] py-2 px-7 text-white my-2 hover:bg-red-500 transition-all duration-300">
                 CHAT NOW
               </button>
@@ -31,7 +31,7 @@ function Contact() {
             <div className="icon">
               <ion-icon name="send-outline"></ion-icon>
             </div>
-            <a href="mailto:info@suhaag.in">
+            <a href="mailto:suhaagmatrimony@gmail.com">
               <button className="bg-[#f31260] py-2 px-7 text-white my-2 hover:bg-red-500 transition-all duration-700">
                 EMAIL US
               </button>
@@ -47,7 +47,7 @@ function Contact() {
               <ion-icon name="call-outline"></ion-icon>
             </div>
             <button className="bg-[#f31260] py-2 px-7 text-white my-2 hover:bg-red-500 transition-all duration-300">
-              903-246-5688
+            +91 7723868292
             </button>
             <p className="text-[15px] text-center tracking-widest">
               MONDAY - SATURDAY
