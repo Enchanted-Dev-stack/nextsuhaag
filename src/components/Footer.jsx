@@ -8,7 +8,7 @@ function Footer() {
       <div className="contact font-Outfit flex  xs:flex-row m-auto items-center justify-between py-3 px-20 max-sm:px-5">
         <div className="section1 p-5 max-sm:p-2">
           <h3 className="text-3xl max-sm:text-2xl font-semibold">Contact Us</h3>
-          <p className="text-xl max-sm:text-sm">+91-XXX-XXXX-XXX</p>
+          <p className="text-xl max-sm:text-sm">+917723868292</p>
         </div>
         <div className="socials text-[24px] flex flex-col items-center justify-center">
           <h3 className="text-3xl font-bold max-sm:text-2xl">Socials</h3>
@@ -29,11 +29,11 @@ function Footer() {
         
         <div className="mailSub w-[40%] max-sm:w-full max-md:w-[60%]">
           <div className="branding flex gap-4 py-5">
-            <img
+            {/* <img
               src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUqgIwiPZfgj5hJYhbUSM79cMOcrOuDLD2BqMnFrmaTLJKJtkSLbf6IqzRVDeIh1TQwCiSKfMzrp0-X2pRt1O20KpHnW4Vfs0_2-V1Y_W6QE1D6FLOLLaexbhcCe49e6sYIxfYQrK3B97CpCpNz6Yvf_jEHjgEwXp9BfW6tnhJXDBBaBS0bGBGWHP5IwDA/s702/suhaag-1-SEND-3.png"
               alt=""
               className="w-[70px] aspect-square p-1 rounded-full bg-white shadow-md"
-            />
+            /> */}
             <div className="texts flex flex-col justify-center">
               <h3 className="text-3xl font-normal font-Kaushan text-white bg-clip-text bg-gradient-to-tr from-yellow-400 to-Primary-500">
                 Suhaag
