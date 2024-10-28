@@ -94,7 +94,7 @@ export default function Home() {
             />
             <Card
               title="Venues"
-              img="https://www.betterhalf.ai/_next/static/media/magarath.0f6133ce.webp"
+              img="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfN_5xJLBQonKPuowJTjq4Y70QVEf22qJjlIAcEJJoWBDuz3ffAvBjxSWs_DPODvuSfl5vvV5YMrApWD1rtoMM87k-bj_zOVrCemMveAaNcV1zZ1RbLgKQZlsrI_64BL_W3gGR4QX3mww4pq8YBOV8IVdOGhyOe0q88Y_dBaIhL8AgTKaaftaX0792vwD1/s3000/premium_photo-1661964071015-d97428970584.webp"
             />
           </div>
         </div>
