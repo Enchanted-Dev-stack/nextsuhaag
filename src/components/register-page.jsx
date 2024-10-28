@@ -655,7 +655,7 @@ export function RegisterPageComponent() {
               </h2>
               <div className="space-y-4">
                 <p>
-                  We&apos;ve sent a verification code to your email. Please
+                  We&apos;ve sent a verification code to your email [{formData.email}]. Please
                   enter it below to complete your registration.
                 </p>
                 <div>
