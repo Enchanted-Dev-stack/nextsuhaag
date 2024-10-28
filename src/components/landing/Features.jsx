@@ -16,7 +16,7 @@ function Features() {
                     icon: UsersRound,
                     title: "Millions of Profiles",
                     description:
-                      "Search by location, profession, community & more",
+                      "Search by location,profession,community &more.Get matches on whatsapp and email as per your preferences.",
                   },
                   {
                     icon: BadgeCheck,
