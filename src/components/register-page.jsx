@@ -120,27 +120,27 @@ export function RegisterPageComponent() {
   };
 
   const validateStep = () => {
-    // const errors = []
-    // if (step === 1) {
-    //   if (!formData.firstName) errors.push("First name is required")
-    //   if (!formData.lastName) errors.push("Last name is required")
-    //   if (!formData.email) errors.push("Email is required")
-    //   if (!/\S+@\S+\.\S+/.test(formData.email)) errors.push("Email is invalid")
-    //   if (!formData.phoneNumber) errors.push("Phone number is required")
-    //   if (!/^\d{10}$/.test(formData.phoneNumber)) errors.push("Phone number is invalid")
-    //   if (!formData.dob) errors.push("Date of birth is required")
-    //   if (!formData.gender) errors.push("Gender is required")
-    // } else if (step === 2) {
-    //   if (!formData.education) errors.push("Education is required")
-    //   if (!formData.occupation) errors.push("Occupation is required")
-    //   if (!formData.annualIncome) errors.push("Annual income is required")
-    // } else if (step === 3) {
-    //   if (!formData.maritalStatus) errors.push("Marital status is required")
-    //   if (!formData.religion) errors.push("Religion is required")
-    // } else if (step === 4) {
-    //   if (!isVerified) errors.push("Email verification is required")
-    // }
-    return true
+    const errors = []
+    if (step === 1) {
+      if (!formData.firstName) errors.push("First name is required")
+      if (!formData.lastName) errors.push("Last name is required")
+      if (!formData.email) errors.push("Email is required")
+      if (!/\S+@\S+\.\S+/.test(formData.email)) errors.push("Email is invalid")
+      if (!formData.phoneNumber) errors.push("Phone number is required")
+      if (!/^\d{10}$/.test(formData.phoneNumber)) errors.push("Phone number is invalid")
+      if (!formData.dob) errors.push("Date of birth is required")
+      if (!formData.gender) errors.push("Gender is required")
+    } else if (step === 2) {
+      if (!formData.education) errors.push("Education is required")
+      if (!formData.occupation) errors.push("Occupation is required")
+      if (!formData.annualIncome) errors.push("Annual income is required")
+    } else if (step === 3) {
+      if (!formData.maritalStatus) errors.push("Marital status is required")
+      if (!formData.religion) errors.push("Religion is required")
+    } else if (step === 4) {
+      if (!isVerified) errors.push("Email verification is required")
+    }
+    return errors
   };
 
   const nextStep = () => {
