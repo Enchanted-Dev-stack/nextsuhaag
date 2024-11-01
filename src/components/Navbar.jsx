@@ -103,6 +103,14 @@ function Navbar(props) {
               </li>
             </a> */}
             <a
+              href={"/tools/biodata-generator"}
+              className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium text-center`}
+            >
+              <li>
+                Biodata Generator
+              </li>
+            </a>
+            <a
               href={"/contact"}
               className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}
             >

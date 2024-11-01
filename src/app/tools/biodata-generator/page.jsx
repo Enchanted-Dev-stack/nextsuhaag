@@ -20,8 +20,8 @@ function Page() {
     "/BiodataTemplates/bg1.png",
     "/BiodataTemplates/bg2.png",
     "/BiodataTemplates/bg3.png",
-    "/BiodataTemplates/bg4.png",
-    "/BiodataTemplates/bg5.png",
+    // "/BiodataTemplates/bg4.png",
+    // "/BiodataTemplates/bg5.png",
   ];
 
   const [details, setDetails] = useState({
