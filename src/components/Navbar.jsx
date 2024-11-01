@@ -52,9 +52,9 @@ function Navbar(props) {
         fill />
         </div> */}
         <div className="texts flex flex-col justify-center">
-          <span className={`text-2xl lg:text-4xl font-Kaushan pr-2 pb-2 font-normal text-Primary-600 ${props.variant == "clear" ? "text-white" : "bg-gradient-to-t"} from-[#509ae7] to-red-600 bg-clip-text text-transparent`}>
+          <a href="/" className={`text-2xl lg:text-4xl font-Kaushan pr-2 pb-2 font-normal text-Primary-600 ${props.variant == "clear" ? "text-white" : "bg-gradient-to-t"} from-[#509ae7] to-red-600 bg-clip-text text-transparent`}>
             Suhaag
-          </span>
+          </a>
           {/* <span className="text-xs font-Oswald tracking-widest text-red-700">FIND PERFECT PARTNER</span> */}
         </div>
       </div>
