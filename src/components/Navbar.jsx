@@ -79,12 +79,12 @@ function Navbar(props) {
             <ion-icon name="close-outline" ></ion-icon>
           </div>
           <ul className="flex justify-center items-center gap-4 text-primary font-normal flex-col lg:flex-row ">
-            {/* <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
+            <a href="/" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
               <li>
                 Home
               </li>
             </a>
-            <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
+            {/* <a href="#" className={`${props.variant == "clear" ? "text-white" : "text-black"} font-Montserrat font-medium`}>
               <li>
                 Decorators
               </li>
