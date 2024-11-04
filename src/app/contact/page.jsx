@@ -4,6 +4,11 @@ import ScrollToTop from "@/components/Utils/ScrollToTop";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+export const metadata = {
+  title: "Contact | Suhaag Matrimony",
+  description: "Contact | Suhaag Matrimony",
+};
+
 function Contact() {
   return (
     <>
