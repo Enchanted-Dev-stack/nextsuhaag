@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/api/form/basicdetails/route.jsx"  ],
+, "src/app/api/form/basicdetails/route.jsx", "src/components/not-found.jsx"  ],
   "exclude": [
     "node_modules"
   ]

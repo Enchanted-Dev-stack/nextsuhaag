@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 
-const Star = ({ top, left, size }: { top: string; left: string; size: number }) => (
+const Star = ({ top, left, size }) => (
   <div
     className="absolute rounded-full bg-white"
     style={{
@@ -51,7 +51,7 @@ export  function NotFoundComponent() {
           <h2 className="text-4xl font-semibold mb-6">PAGE NOT FOUND</h2>
           <p className="text-gray-400 mb-8">Your search has ventured beyond the known universe.</p>
           <Link href="/">
-            <Button className="bg-transparent border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all">
+            <Button  className="bg-transparent border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all">
               Back To Home
             </Button>
           </Link>
